@@ -21,7 +21,7 @@ public class Persona {
 	}
 	
 	public int indiceDeSimilaridad(Persona j) {
-		return(Math.abs(d-j.getD())-Math.abs(m-j.getM())-Math.abs((e-j.getE()))-Math.abs(c-j.getC()));
+		return(Math.abs(d-j.getD())+Math.abs(m-j.getM())+Math.abs((e-j.getE()))+Math.abs(c-j.getC()));
 	}
 
 	public int getM() {

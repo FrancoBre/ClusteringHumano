@@ -12,7 +12,7 @@ public class Grafo {
     }
 
     public Grafo(ArrayList<Vertice> vertices) {
-	this.vertices = new ArrayList<Vertice>();
+	this.vertices = vertices;
 	this.aristas = new ArrayList<Arista>();
 
 	for(int i=0; i<vertices.size(); i++) 

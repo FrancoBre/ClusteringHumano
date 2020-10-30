@@ -8,6 +8,6 @@ public class Vertice {
 	
 	public Vertice (Persona persona){
 		this.vecinos = new ArrayList<Arista>();
-		this.i=persona;
+		this.i = persona;
 	}
 }

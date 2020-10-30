@@ -10,7 +10,20 @@ public class Vertice {
 		this.vecinos = new ArrayList<Arista>();
 		this.i = persona;
 	}
-
+ 
+	public void insertarVecino(Arista arista) {
+		if(!this.vecinos.contains(arista))
+			this.vecinos.add(arista);
+	}
+	
+	public boolean contiene(Arista arista) {
+		return this.vecinos.contains(arista);
+	}
+	
+	public void eliminarVecino(Arista arista) {
+		this.vecinos.remove(arista);
+	}
+	
 	public ArrayList<Arista> getVecinos() {
 		return vecinos;
 	}

@@ -10,4 +10,20 @@ public class Vertice {
 		this.vecinos = new ArrayList<Arista>();
 		this.i = persona;
 	}
+
+	public ArrayList<Arista> getVecinos() {
+		return vecinos;
+	}
+
+	public void setVecinos(ArrayList<Arista> vecinos) {
+		this.vecinos = vecinos;
+	}
+
+	public Persona getPersona() {
+		return i;
+	}
+
+	public void setI(Persona i) {
+		this.i = i;
+	}
 }

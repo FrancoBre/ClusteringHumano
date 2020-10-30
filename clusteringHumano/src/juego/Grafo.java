@@ -19,4 +19,20 @@ public class Grafo {
 		this.vertices.add(vertices.get(i));
 
     }
+
+	public ArrayList<Vertice> getVertices() {
+		return vertices;
+	}
+
+	public void setVertices(ArrayList<Vertice> vertices) {
+		this.vertices = vertices;
+	}
+
+	public ArrayList<Arista> getAristas() {
+		return aristas;
+	}
+
+	public void setAristas(ArrayList<Arista> aristas) {
+		this.aristas = aristas;
+	}
 }

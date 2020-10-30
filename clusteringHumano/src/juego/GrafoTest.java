@@ -13,7 +13,8 @@ class GrafoTest {
 
 	@Test
 	void creacionDeVerticeTest() {
-		
+		Vertice vertice = new Vertice(new Persona(1, 2, 1, 5));
+
 	}
 	
 	@Test

@@ -17,12 +17,9 @@ public class Juego {
 		return new Persona(m, d, e, c);
 	}
 	
-	public Vertice crearVertice(Persona persona) {
-		return new Vertice(persona);
-	}
-	
-	public Arista crearArista(Persona persona1, Persona persona2) {
-		return new Arista((new Vertice(persona1)), (new Vertice(persona2)));
+	public void añadirArista(Persona persona1, Persona persona2) {
+		Arista arista= new Arista((new Vertice(persona1)), (new Vertice(persona2)));
+		grafo.agregarArista(arista);
 	}
 	
 }

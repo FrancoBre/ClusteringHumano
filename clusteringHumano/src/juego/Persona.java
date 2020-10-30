@@ -8,9 +8,16 @@ public class Persona {
 	
 	public Persona(int musica, int deportes, int espectaculo, int ciencia) {
 		if(musica>=0 && musica<=5) this.m=musica;
-		if(deportes>=0 && deportes>=5) this.d=deportes;
-		if(espectaculo>=0 && espectaculo>=5) this.e=espectaculo;
-		if(espectaculo>=0 && espectaculo>=5) this.c=ciencia;
+		else verificarIlegales("musica");
+		
+		if(deportes>=0 && deportes<=5) this.d=deportes;
+		else verificarIlegales("deportes");
+		
+		if(espectaculo>=0 && espectaculo<=5) this.e=espectaculo;
+		else verificarIlegales("espectaculo");
+		
+		if(espectaculo>=0 && espectaculo<=5) this.c=ciencia;
+		else verificarIlegales("espectaculo");
 	}
 	
 	public int indiceDeSimilaridad(Persona j) {
@@ -22,8 +29,7 @@ public class Persona {
 	}
 
 	public void setM(int m) {
-		if(m<=0) throw new IllegalArgumentException("El indice de interes por la musica debe ser mayor a 0");
-		if(m>=5) throw new IllegalArgumentException("El indice de interes por la musica debe ser menor a 5");
+		verificarIlegales("musica");
 		this.m = m;
 	}
 
@@ -32,8 +38,7 @@ public class Persona {
 	}
 
 	public void setD(int d) {
-		if(d<=0) throw new IllegalArgumentException("El indice de interes por los deportes debe ser mayor a 0");
-		if(d>=5) throw new IllegalArgumentException("El indice de interes por los deportes debe ser menor a 5");
+		verificarIlegales("deportes");
 		this.d = d;
 	}
 
@@ -42,8 +47,7 @@ public class Persona {
 	}
 
 	public void setE(int e) {
-		if(e<=0) throw new IllegalArgumentException("El indice de interes por el espectaculo debe ser mayor a 0");
-		if(e>=5) throw new IllegalArgumentException("El indice de interes por el espectaculo debe ser menor a 5");
+		verificarIlegales("espectaculo");
 		this.e = e;
 	}
 
@@ -52,9 +56,12 @@ public class Persona {
 	}
 
 	public void setC(int c) {
-		if(c<=0) throw new IllegalArgumentException("El indice de interes por la ciencia debe ser mayor a 0");
-		if(c>=5) throw new IllegalArgumentException("El indice de interes por la ciencia debe ser menor a 5");
+		verificarIlegales("ciencia");
 		this.c = c;
+	}
+	
+	public void verificarIlegales(String indice) {
+		throw new IllegalArgumentException("Los indices deben ser mayores que 0 y menores que 5= "+indice);
 	}
 	
 }

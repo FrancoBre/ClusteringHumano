@@ -9,4 +9,5 @@ public class Arista {
 		this.vertice2=vertice2;
 		this.peso=peso;
 	 }
+	 
 }

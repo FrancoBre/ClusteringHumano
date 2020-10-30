@@ -19,6 +19,20 @@ public class Grafo {
 		this.vertices.add(vertices.get(i));
 
     }
+    
+    public void agregarArista(Arista arista) {
+    	vertices.add(arista.getVertice1());
+    	vertices.add(arista.getVertice2());
+    }
+    
+    public void eliminarArista(Arista arista) {
+    	vertices.remove(arista.getVertice1());
+    	vertices.remove(arista.getVertice2());
+    }
+    
+    public boolean existeArista(Arista arista) {
+    	return arista.getVertice1().getVecinos().contains(arista.getVertice2());
+    }
 
 	public ArrayList<Vertice> getVertices() {
 		return vertices;

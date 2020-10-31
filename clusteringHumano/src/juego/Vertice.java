@@ -3,6 +3,7 @@ package juego;
 import java.util.ArrayList;
 
 public class Vertice {
+	
 	private ArrayList<Vertice> vecinos;
 	private Persona i;
 	

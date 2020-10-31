@@ -1,6 +1,7 @@
 package juego;
 
 public class Arista {
+	
 	private Vertice vertice1, vertice2;
 	private int peso;
 

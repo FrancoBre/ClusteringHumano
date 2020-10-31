@@ -1,6 +1,8 @@
 package juego;
 
 public class Persona {
+	
+	private String nombre;
 	private int m;
 	private int d;
 	private int e;
@@ -60,8 +62,36 @@ public class Persona {
 		this.c = c;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public void verificarIlegales(String indice) {
 		throw new IllegalArgumentException("Los indices deben ser mayores que 0 y menores que 5= "+indice);
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+	    
+	   Persona persona = (Persona) o;
+	   	 
+	   if(this.c==persona.getC() && 
+	      this.d==persona.getD() &&
+	      this.e==persona.getE() &&
+	      this.m==persona.getM()) 
+	   return true; 
+	   else return false;   
+
+	}
+	
+	@Override
+	public String toString() {
+		return nombre+"/n indices de gustos:/n musica= "+m+", "
+				+ "deportes= "+d+" espectaculo= "+e+" ciencia= "+c;
+				
+	}
 }

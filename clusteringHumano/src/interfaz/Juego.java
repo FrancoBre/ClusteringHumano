@@ -9,9 +9,9 @@ import juego.Vertice;
 
 public class Juego {
 
-	Grafo grafo;
-	ArrayList<Persona> personas;
-	
+	private Grafo grafo;
+	private ArrayList<Persona> personas;
+
 	public Juego() {
 		this.grafo = new Grafo();
 		this.personas = new ArrayList<Persona>();
@@ -23,9 +23,10 @@ public class Juego {
 	}
 	
 	private void crearAristas() {
-		for (int i = 0; i < personas.size(); i++) {
+		for (int i = 0; i < personas.size(); i++) if(personas.size()>1) {
 			Persona persona = personas.get(i);
 			Persona ultimaPersona = personas.get(personas.size());
+			
 			this.grafo.agregarArista(new Arista((new Vertice(persona)), 
 					(new Vertice(ultimaPersona))));
 		}
@@ -49,5 +50,21 @@ public class Juego {
 
 	}
 */
+	
+	public Grafo getGrafo() {
+		return grafo;
+	}
+
+	public void setGrafo(Grafo grafo) {
+		this.grafo = grafo;
+	}
+
+	public ArrayList<Persona> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(ArrayList<Persona> personas) {
+		this.personas = personas;
+	}
 	
 }

@@ -49,4 +49,25 @@ public class Vertice {
 	public void setI(Persona i) {
 		this.i = i;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Vertice vertice = (Vertice) o;
+		
+		if(this.i.equals(vertice.getPersona())) return true;
+		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("["+this.i.toString()+"].\n Con los vecinos: ");
+		
+		for (int i = 0; i < this.vecinos.size(); i++) 
+			string.append(vecinos.get(i).toString());
+		
+		return string.toString();
+		
+	}
+	
 }

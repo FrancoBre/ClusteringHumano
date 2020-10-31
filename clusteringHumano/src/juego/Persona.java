@@ -90,7 +90,7 @@ public class Persona {
 	
 	@Override
 	public String toString() {
-		return nombre+"/n indices de gustos:/n musica= "+m+", "
+		return nombre+"\n indices de gustos:\n musica= "+m+", "
 				+ "deportes= "+d+" espectaculo= "+e+" ciencia= "+c;
 				
 	}

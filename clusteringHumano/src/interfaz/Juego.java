@@ -25,17 +25,12 @@ public class Juego {
 	private void crearAristas() {
 		for (int i = 0; i < personas.size(); i++) if(personas.size()>1) {
 			Persona persona = personas.get(i);
-			Persona ultimaPersona = personas.get(personas.size());
+			Persona ultimaPersona = personas.get(personas.size()-1);
 			
 			this.grafo.agregarArista(new Arista((new Vertice(persona)), 
 					(new Vertice(ultimaPersona))));
 		}
 	}
-	
-//	public void añadirArista(Persona persona1, Persona persona2) {
-//		Arista arista = new Arista((new Vertice(persona1)), (new Vertice(persona2)));
-//		grafo.agregarArista(arista);
-//	}
 	
 	public int tamanioGrafo() {
 		return this.grafo.getVertices().size();

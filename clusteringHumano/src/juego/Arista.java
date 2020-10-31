@@ -43,4 +43,21 @@ public class Arista {
 		this.peso = peso;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		Arista arista = (Arista) o;
+		
+		if(this.vertice1.equals(arista.getVertice1()) &&
+				this.vertice2.equals(arista.getVertice2()) &&
+				this.peso==arista.getPeso())
+			return true;
+		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Vertices en esta arista= "+this.vertice1.toString()+", "
+					+this.vertice2.toString();
+	}
+	
 }

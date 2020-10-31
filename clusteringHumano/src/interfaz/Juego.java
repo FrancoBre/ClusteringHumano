@@ -1,5 +1,7 @@
 package interfaz;
 
+import java.util.ArrayList;
+
 import juego.Arista;
 import juego.Grafo;
 import juego.Persona;
@@ -8,19 +10,31 @@ import juego.Vertice;
 public class Juego {
 
 	Grafo grafo;
+	ArrayList<Persona> personas;
 	
 	public Juego() {
-		this.grafo=new Grafo();
+		this.grafo = new Grafo();
+		this.personas = new ArrayList<Persona>();
 	}
 	
-	public Persona crearPersona(int m, int d, int e, int c) {
-		return new Persona(m, d, e, c);
+	public void crearPersona(int m, int d, int e, int c) {
+		this.personas.add(new Persona(m, d, e, c));
+		crearAristas();
 	}
 	
-	public void añadirArista(Persona persona1, Persona persona2) {
-		Arista arista = new Arista((new Vertice(persona1)), (new Vertice(persona2)));
-		grafo.agregarArista(arista);
+	private void crearAristas() {
+		for (int i = 0; i < personas.size(); i++) {
+			Persona persona = personas.get(i);
+			Persona ultimaPersona = personas.get(personas.size());
+			this.grafo.agregarArista(new Arista((new Vertice(persona)), 
+					(new Vertice(ultimaPersona))));
+		}
 	}
+	
+//	public void añadirArista(Persona persona1, Persona persona2) {
+//		Arista arista = new Arista((new Vertice(persona1)), (new Vertice(persona2)));
+//		grafo.agregarArista(arista);
+//	}
 	
 	public int tamanioGrafo() {
 		return this.grafo.getVertices().size();

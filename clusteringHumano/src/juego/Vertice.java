@@ -16,12 +16,17 @@ public class Vertice {
 			this.vecinos.add(vertice);
 	}
 	
-	public boolean contiene(Arista arista) {
-		return this.vecinos.contains(arista);
+	public boolean contiene(Vertice vertice) {
+		return this.vecinos.contains(vertice);
 	}
 	
 	public void eliminarVecino(Arista arista) {
-		this.vecinos.remove(arista);
+		arista.getVertice1().vecinos.remove(arista.getVertice2());
+		arista.getVertice2().vecinos.remove(arista.getVertice1());
+	}
+	
+	public void eliminarVecino(Vertice vertice) {
+		this.vecinos.remove(vertice);
 	}
 	
 	public boolean tieneVecino(Vertice vertice) {

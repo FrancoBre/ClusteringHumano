@@ -26,8 +26,6 @@ public class Grafo {
     		vertices.add(arista.getVertice1());
     		vertices.add(arista.getVertice2());
     		aristas.add(arista);
-    		arista.getVertice1().insertarVecino(arista.getVertice2());
-    		arista.getVertice2().insertarVecino(arista.getVertice1());
     	}
     	
     }
@@ -36,6 +34,7 @@ public class Grafo {
     	vertices.remove(arista.getVertice1());
     	vertices.remove(arista.getVertice2());
     	aristas.remove(arista);
+    	arista.getVertice1().eliminarVecino(arista);
     }
     
     public boolean existeArista(Arista arista) {

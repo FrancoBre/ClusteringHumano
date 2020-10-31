@@ -11,12 +11,14 @@ public class Grafo {
     	this.aristas = new ArrayList<Arista>();
     }
 
-    public Grafo(ArrayList<Vertice> vertices) {
-    	this.vertices = vertices;
-    	this.aristas = new ArrayList<Arista>();
+    public Grafo(ArrayList<Arista> aristas) {
+    	this.aristas = aristas;
+    	this.vertices = new ArrayList<Vertice>();
 
-    	for(int i=0; i<vertices.size(); i++) 
-    		this.vertices.add(vertices.get(i));
+    	for(int i=0; i<vertices.size(); i++) { 
+    		this.vertices.add(aristas.get(i).getVertice1());
+    		this.vertices.add(aristas.get(i).getVertice2());
+    	}
 
     }
     

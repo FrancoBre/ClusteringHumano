@@ -3,17 +3,17 @@ package juego;
 import java.util.ArrayList;
 
 public class Vertice {
-	private ArrayList<Arista> vecinos;
+	private ArrayList<Vertice> vecinos;
 	private Persona i;
 	
 	public Vertice (Persona persona) {
-		this.vecinos = new ArrayList<Arista>();
+		this.vecinos = new ArrayList<Vertice>();
 		this.i = persona;
 	}
  
-	public void insertarVecino(Arista arista) {
-		if(!this.vecinos.contains(arista))
-			this.vecinos.add(arista);
+	public void insertarVecino(Vertice vertice) {
+		if(!this.vecinos.contains(vertice))
+			this.vecinos.add(vertice);
 	}
 	
 	public boolean contiene(Arista arista) {
@@ -24,11 +24,15 @@ public class Vertice {
 		this.vecinos.remove(arista);
 	}
 	
-	public ArrayList<Arista> getVecinos() {
+	public boolean tieneVecino(Vertice vertice) {
+		return vertice.vecinos.isEmpty();
+	}
+	
+	public ArrayList<Vertice> getVecinos() {
 		return vecinos;
 	}
 
-	public void setVecinos(ArrayList<Arista> vecinos) {
+	public void setVecinos(ArrayList<Vertice> vecinos) {
 		this.vecinos = vecinos;
 	}
 

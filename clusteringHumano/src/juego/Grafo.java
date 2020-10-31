@@ -21,9 +21,15 @@ public class Grafo {
     }
     
     public void agregarArista(Arista arista) {
-    	vertices.add(arista.getVertice1());
-    	vertices.add(arista.getVertice2());
-    	aristas.add(arista);
+ 
+    	if(!aristas.contains(arista)) {
+    		vertices.add(arista.getVertice1());
+    		vertices.add(arista.getVertice2());
+    		aristas.add(arista);
+    		arista.getVertice1().insertarVecino(arista.getVertice2());
+    		arista.getVertice2().insertarVecino(arista.getVertice1());
+    	}
+    	
     }
     
     public void eliminarArista(Arista arista) {

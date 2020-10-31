@@ -8,7 +8,7 @@ class GrafoTest {
 
 	@Test
 	void creacionDeGrafoTest() {
-		
+		Grafo g = new Grafo();
 	}
 
 	@Test

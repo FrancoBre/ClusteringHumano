@@ -18,8 +18,22 @@ public class Juego {
 	}
 	
 	public void añadirArista(Persona persona1, Persona persona2) {
-		Arista arista= new Arista((new Vertice(persona1)), (new Vertice(persona2)));
+		Arista arista = new Arista((new Vertice(persona1)), (new Vertice(persona2)));
 		grafo.agregarArista(arista);
 	}
+	
+	public int tamanioGrafo() {
+		return this.grafo.getVertices().size();
+	}
+	
+/*	
+	public Arista aristaDeMayorPeso() {
+		
+	}
+	
+	public int cantComponentesConexas() {
+
+	}
+*/
 	
 }

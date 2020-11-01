@@ -83,36 +83,40 @@ public class Interfaz {
 		ingresarPersonas.add(textField_1);
 		
 		JSpinner spinner1 = new JSpinner();
+		spinner1.setModel(new SpinnerNumberModel(1, 1, 5, 1));
 		spinner1.setBounds(183, 120, 30, 17);
 		ingresarPersonas.add(spinner1);
 		
-		JSpinner spinner_1_2 = new JSpinner();
-		spinner_1_2.setBounds(183, 155, 30, 17);
-		ingresarPersonas.add(spinner_1_2);
+		JSpinner spinner2 = new JSpinner();
+		spinner2.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		spinner2.setBounds(183, 155, 30, 17);
+		ingresarPersonas.add(spinner2);
 		
-		JSpinner spinner_1_3 = new JSpinner();
-		spinner_1_3.setBounds(183, 190, 30, 17);
-		ingresarPersonas.add(spinner_1_3);
+		JSpinner spinner3 = new JSpinner();
+		spinner3.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		spinner3.setBounds(183, 190, 30, 17);
+		ingresarPersonas.add(spinner3);
 		
-		JSpinner spinner_1_4 = new JSpinner();
-		spinner_1_4.setBounds(183, 225, 30, 17);
-		ingresarPersonas.add(spinner_1_4);
+		JSpinner spinner4 = new JSpinner();
+		spinner4.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		spinner4.setBounds(183, 225, 30, 17);
+		ingresarPersonas.add(spinner4);
 		
-		JLabel label1_1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
-		label1_1.setBounds(25, 119, 131, 21);
-		ingresarPersonas.add(label1_1);
+		JLabel label1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
+		label1.setBounds(25, 119, 131, 21);
+		ingresarPersonas.add(label1);
 		
-		JLabel label2_1 = new JLabel("Inter\u00E9s por los deportes");
-		label2_1.setBounds(25, 154, 141, 21);
-		ingresarPersonas.add(label2_1);
+		JLabel label2 = new JLabel("Inter\u00E9s por los deportes");
+		label2.setBounds(25, 154, 141, 21);
+		ingresarPersonas.add(label2);
 		
-		JLabel label3_1 = new JLabel("Inter\u00E9s por la ciencia");
-		label3_1.setBounds(25, 189, 131, 21);
-		ingresarPersonas.add(label3_1);
+		JLabel label3 = new JLabel("Inter\u00E9s por la ciencia");
+		label3.setBounds(25, 189, 131, 21);
+		ingresarPersonas.add(label3);
 		
-		JLabel label1_4_1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
-		label1_4_1.setBounds(25, 224, 131, 21);
-		ingresarPersonas.add(label1_4_1);
+		JLabel label14 = new JLabel("Inter\u00E9s por la m\u00FAsica");
+		label14.setBounds(25, 224, 131, 21);
+		ingresarPersonas.add(label14);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Ingrese el interes del 1 al 5 por los siguientes temas:");
 		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));

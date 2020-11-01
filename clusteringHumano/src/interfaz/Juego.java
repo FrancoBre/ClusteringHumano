@@ -12,9 +12,6 @@ public class Juego {
 	private Grafo grafo;
 	private ArrayList<Persona> personas;
 
-	///prueba 
-	// no me funca
-	
 	public Juego() {
 		this.grafo = new Grafo();
 		this.personas = new ArrayList<Persona>();

@@ -22,12 +22,20 @@ import javax.swing.JTable;
 import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
+import juego.Persona;
+
 public class Interfaz {
 
 	private JFrame frame;
-	private JTextField textField_1;
+	private JTextField txt_nombre;
 	private JTable table;
-
+	
+	//Declaro las variables aca para tenerlas para las funciones
+	JSpinner itm_musica = new JSpinner();
+	JSpinner itm_deporte = new JSpinner();
+	JSpinner itm_espectaculo = new JSpinner();
+	JSpinner itm_ciencia = new JSpinner();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -77,30 +85,30 @@ public class Interfaz {
 		lblNewLabel_3.setBounds(25, 51, 104, 21);
 		ingresarPersonas.add(lblNewLabel_3);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(139, 50, 104, 20);
-		ingresarPersonas.add(textField_1);
+		txt_nombre = new JTextField();
+		txt_nombre.setColumns(10);
+		txt_nombre.setBounds(139, 50, 104, 20);
+		ingresarPersonas.add(txt_nombre);
 		
-		JSpinner spinner1 = new JSpinner();
-		spinner1.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner1.setBounds(183, 120, 30, 17);
-		ingresarPersonas.add(spinner1);
 		
-		JSpinner spinner2 = new JSpinner();
-		spinner2.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner2.setBounds(183, 155, 30, 17);
-		ingresarPersonas.add(spinner2);
+		itm_musica.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		itm_musica.setBounds(220, 119, 30, 17);
+		ingresarPersonas.add(itm_musica);
 		
-		JSpinner spinner3 = new JSpinner();
-		spinner3.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner3.setBounds(183, 190, 30, 17);
-		ingresarPersonas.add(spinner3);
 		
-		JSpinner spinner4 = new JSpinner();
-		spinner4.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner4.setBounds(183, 225, 30, 17);
-		ingresarPersonas.add(spinner4);
+		itm_deporte.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		itm_deporte.setBounds(220, 154, 30, 17);
+		ingresarPersonas.add(itm_deporte);
+		
+		
+		itm_ciencia.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		itm_ciencia.setBounds(220, 220, 30, 17);
+		ingresarPersonas.add(itm_ciencia);
+		
+		
+		itm_espectaculo.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		itm_espectaculo.setBounds(220, 186, 30, 17);
+		ingresarPersonas.add(itm_espectaculo);
 		
 		JLabel label1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
 		label1.setBounds(25, 119, 131, 21);
@@ -111,16 +119,16 @@ public class Interfaz {
 		ingresarPersonas.add(label2);
 		
 		JLabel label3 = new JLabel("Inter\u00E9s por la ciencia");
-		label3.setBounds(25, 189, 131, 21);
+		label3.setBounds(25, 220, 131, 21);
 		ingresarPersonas.add(label3);
 		
-		JLabel label14 = new JLabel("Inter\u00E9s por la m\u00FAsica");
-		label14.setBounds(25, 224, 131, 21);
+		JLabel label14 = new JLabel("Inter\u00E9s por las noticias del espect\u00E1culo");
+		label14.setBounds(25, 186, 202, 21);
 		ingresarPersonas.add(label14);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Ingrese el interes del 1 al 5 por los siguientes temas:");
 		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(22, 83, 379, 14);
+		lblNewLabel_1_1.setBounds(25, 83, 376, 14);
 		ingresarPersonas.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Clustering Humano");
@@ -128,13 +136,13 @@ public class Interfaz {
 		lblNewLabel_2_1.setBounds(129, 25, 200, 14);
 		ingresarPersonas.add(lblNewLabel_2_1);
 		
-		JButton btnNewButton = new JButton("Guardar");
-		btnNewButton.setBounds(110, 255, 89, 23);
-		ingresarPersonas.add(btnNewButton);
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(110, 255, 89, 23);
+		ingresarPersonas.add(btnGuardar);
 		
-		JButton btnNewButton_1 = new JButton("Ver lista");
-		btnNewButton_1.setBounds(257, 255, 89, 23);
-		ingresarPersonas.add(btnNewButton_1);
+		JButton btnVerLista = new JButton("Ver lista");
+		btnVerLista.setBounds(257, 255, 89, 23);
+		ingresarPersonas.add(btnVerLista);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(144, 238, 144));
@@ -164,16 +172,20 @@ public class Interfaz {
 		panel.add(table);
 		ingresarPersonas.setVisible(true);
 		 // Action boton VerLista
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnVerLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ingresarPersonas.setVisible(false);
 				panel.setVisible(true);
 			}});
 		
 		 // Action boton Guardar
-		btnNewButton.addActionListener(new ActionListener() {
+		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//me parece que no hace falta, ya se esta parado en ese tablero
 				ingresarPersonas.setVisible(true);
+				//Agrego la persona
+				agregarPersona();
+				limpioDatos();
 				panel.setVisible(false);
 			}});
 	
@@ -185,6 +197,27 @@ public class Interfaz {
 	 * @param spinner
 	 */
 	public void spinner_Configuracion(JSpinner spinner) {
+	}
+	
+	public void agregarPersona() {
+		int musica = (int) itm_musica.getValue();
+		int deportes = (int) itm_deporte.getValue();
+		int espectaculo = (int) itm_espectaculo.getValue();
+		int ciencia = (int) itm_ciencia.getValue();
+		//Agrego la persona con sus datos
+		Persona p = new Persona(musica, deportes, espectaculo, ciencia);
+		p.setNombre(txt_nombre.getText());
+		System.out.println(p);
+	}
+	
+	public void limpioDatos() {
+		itm_musica.setValue(1);
+		itm_deporte.setValue(1);
+		itm_espectaculo.setValue(1);
+		itm_ciencia.setValue(1);
+		txt_nombre.setText("");
+		//Hace focus en el texto para volver a agregar
+		txt_nombre.grabFocus();
 	}
 
 	/**

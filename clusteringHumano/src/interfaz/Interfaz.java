@@ -102,12 +102,12 @@ public class Interfaz {
 		
 		
 		itm_musica.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_musica.setBounds(220, 119, 30, 17);
+		itm_musica.setBounds(220, 150, 30, 17);
 		ingresarPersonas.add(itm_musica);
 		
 		
 		itm_deporte.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_deporte.setBounds(220, 154, 30, 17);
+		itm_deporte.setBounds(220, 115, 30, 17);
 		ingresarPersonas.add(itm_deporte);
 		
 		
@@ -121,11 +121,11 @@ public class Interfaz {
 		ingresarPersonas.add(itm_espectaculo);
 		
 		JLabel label1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
-		label1.setBounds(25, 119, 131, 21);
+		label1.setBounds(25, 150, 131, 21);
 		ingresarPersonas.add(label1);
 		
 		JLabel label2 = new JLabel("Inter\u00E9s por los deportes");
-		label2.setBounds(25, 154, 141, 21);
+		label2.setBounds(25, 115, 141, 21);
 		ingresarPersonas.add(label2);
 		
 		JLabel label3 = new JLabel("Inter\u00E9s por la ciencia");
@@ -143,15 +143,15 @@ public class Interfaz {
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Clustering Humano");
 		lblNewLabel_2_1.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
-		lblNewLabel_2_1.setBounds(129, 25, 200, 14);
+		lblNewLabel_2_1.setBounds(129, 11, 200, 28);
 		ingresarPersonas.add(lblNewLabel_2_1);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(110, 255, 89, 23);
+		btnGuardar.setBounds(77, 255, 89, 23);
 		ingresarPersonas.add(btnGuardar);
 		
 		JButton btnVerLista = new JButton("Ver lista");
-		btnVerLista.setBounds(257, 255, 89, 23);
+		btnVerLista.setBounds(230, 255, 89, 23);
 		ingresarPersonas.add(btnVerLista);
 		
 		JPanel panel = new JPanel();
@@ -172,8 +172,8 @@ public class Interfaz {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(41)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(138, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(136, Short.MAX_VALUE))
 		);
 		
 		

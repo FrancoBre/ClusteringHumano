@@ -23,18 +23,28 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import juego.Persona;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollPane;
 
 public class Interfaz {
 
 	private JFrame frame;
 	private JTextField txt_nombre;
-	private JTable table;
 	
 	//Declaro las variables aca para tenerlas para las funciones
 	JSpinner itm_musica = new JSpinner();
 	JSpinner itm_deporte = new JSpinner();
 	JSpinner itm_espectaculo = new JSpinner();
 	JSpinner itm_ciencia = new JSpinner();
+//	private JTable table;
+	DefaultTableModel modelo = new DefaultTableModel();
+	JTable table = new JTable(modelo);
+	String nombre = "";
+	int musica = 0;
+	int deporte =0;
+	int espectaculo = 0;
+	int ciencia = 0;
 	
 	/**
 	 * Launch the application.
@@ -70,7 +80,7 @@ public class Interfaz {
 		
 		JPanel ingresarPersonas = new JPanel();
 		ingresarPersonas.setBackground(new Color(102, 205, 170));
-		ingresarPersonas.setBounds(0, 0, 434, 304);
+		ingresarPersonas.setBounds(0, 0, 392, 304);
 		frame.getContentPane().add(ingresarPersonas);
 		
 		JPanel verLista = new JPanel();
@@ -146,30 +156,36 @@ public class Interfaz {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(144, 238, 144));
-		panel.setBounds(0, 0, 434, 304);
+		panel.setBounds(389, 0, 410, 304);
 		frame.getContentPane().add(panel);
 		
-		table = new JTable();
-		table.setFillsViewportHeight(true);
-		table.setColumnSelectionAllowed(true);
-		table.setCellSelectionEnabled(true);
-		table.setSurrendersFocusOnKeystroke(true);
+		JScrollPane scrollPane = new JScrollPane();
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(28)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(39, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(41)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(138, Short.MAX_VALUE))
+		);
+		
+		
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
+				"Nombre", "Deporte", "M\u00FAsica", "Espectáculo", "Ciencia"
 			}
 		));
-		table.setBackground(new Color(255, 255, 255));
-		table.setToolTipText("");
-		panel.add(table);
+		scrollPane.setViewportView(table);
+		panel.setLayout(gl_panel);
 		ingresarPersonas.setVisible(true);
 		 // Action boton VerLista
 		btnVerLista.addActionListener(new ActionListener() {
@@ -185,11 +201,13 @@ public class Interfaz {
 				ingresarPersonas.setVisible(true);
 				//Agrego la persona
 				agregarPersona();
+				agregarDatosLista();
 				limpioDatos();
-				panel.setVisible(false);
+				//panel.setVisible(false);
+				
 			}});
 	
-		frame.setBounds(100, 100, 450, 343);
+		frame.setBounds(100, 100, 809, 343);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -200,19 +218,20 @@ public class Interfaz {
 	}
 	
 	public void agregarPersona() {
-		int musica = (int) itm_musica.getValue();
-		int deportes = (int) itm_deporte.getValue();
-		int espectaculo = (int) itm_espectaculo.getValue();
-		int ciencia = (int) itm_ciencia.getValue();
+		this.deporte = (int) itm_deporte.getValue();
+		this.musica = (int) itm_musica.getValue();
+		this.espectaculo = (int) itm_espectaculo.getValue();
+		this.ciencia = (int) itm_ciencia.getValue();
 		//Agrego la persona con sus datos
-		Persona p = new Persona(musica, deportes, espectaculo, ciencia);
-		p.setNombre(txt_nombre.getText());
+		Persona p = new Persona(musica, deporte, espectaculo, ciencia);
+		this.nombre = txt_nombre.getText();
+		p.setNombre(nombre);
 		System.out.println(p);
 	}
 	
 	public void limpioDatos() {
-		itm_musica.setValue(1);
 		itm_deporte.setValue(1);
+		itm_musica.setValue(1);
 		itm_espectaculo.setValue(1);
 		itm_ciencia.setValue(1);
 		txt_nombre.setText("");
@@ -220,6 +239,19 @@ public class Interfaz {
 		txt_nombre.grabFocus();
 	}
 
+	public void agregarDatosLista() {
+		int numCols = table.getModel().getColumnCount();
+
+		Object [] fila = new Object[numCols]; 
+		        
+		 fila[0] = this.nombre;
+		 fila[1] = this.deporte;
+		 fila[2] = this.musica;
+		 fila[3] = this.espectaculo;
+		 fila[4] = this.ciencia;
+		 
+		 ((DefaultTableModel) table.getModel()).addRow(fila);
+	}
 	/**
 	 * @param label1_1
 	 */

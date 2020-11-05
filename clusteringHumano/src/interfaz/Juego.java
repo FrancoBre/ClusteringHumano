@@ -11,6 +11,7 @@ public class Juego {
 
 	private Grafo grafo;
 	private ArrayList<Persona> personas;
+	private ArrayList<Arista> aristas;
 
 	public Juego() {
 		this.grafo = new Grafo();
@@ -27,8 +28,10 @@ public class Juego {
 			Persona persona = personas.get(i);
 			Persona ultimaPersona = personas.get(personas.size()-1);
 			
-			this.grafo.agregarArista(new Arista((new Vertice(persona)), 
-					(new Vertice(ultimaPersona))));
+			Arista nuevaArista = new Arista((new Vertice(persona)), (new Vertice(ultimaPersona)));
+			
+			this.grafo.agregarArista(nuevaArista);
+			this.aristas.add(nuevaArista);
 		}
 	}
 	

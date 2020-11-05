@@ -7,12 +7,14 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JScrollBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,10 +24,14 @@ import javax.swing.JTable;
 import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
+import Grafo.JFrameGraphics;
 import juego.Persona;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Interfaz {
 
@@ -66,6 +72,11 @@ public class Interfaz {
 	 * Create the application.
 	 */
 	public Interfaz() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		initialize();
 	}
 
@@ -97,27 +108,27 @@ public class Interfaz {
 		
 		txt_nombre = new JTextField();
 		txt_nombre.setColumns(10);
-		txt_nombre.setBounds(139, 50, 104, 20);
+		txt_nombre.setBounds(139, 50, 111, 20);
 		ingresarPersonas.add(txt_nombre);
 		
 		
 		itm_musica.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_musica.setBounds(220, 150, 30, 17);
+		itm_musica.setBounds(220, 148, 30, 25);
 		ingresarPersonas.add(itm_musica);
 		
 		
 		itm_deporte.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_deporte.setBounds(220, 115, 30, 17);
+		itm_deporte.setBounds(220, 113, 30, 25);
 		ingresarPersonas.add(itm_deporte);
 		
 		
 		itm_ciencia.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_ciencia.setBounds(220, 220, 30, 17);
+		itm_ciencia.setBounds(220, 218, 30, 25);
 		ingresarPersonas.add(itm_ciencia);
 		
 		
 		itm_espectaculo.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		itm_espectaculo.setBounds(220, 186, 30, 17);
+		itm_espectaculo.setBounds(220, 184, 30, 25);
 		ingresarPersonas.add(itm_espectaculo);
 		
 		JLabel label1 = new JLabel("Inter\u00E9s por la m\u00FAsica");
@@ -138,7 +149,7 @@ public class Interfaz {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Ingrese el interes del 1 al 5 por los siguientes temas:");
 		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(25, 83, 376, 14);
+		lblNewLabel_1_1.setBounds(25, 88, 357, 14);
 		ingresarPersonas.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Clustering Humano");
@@ -147,12 +158,26 @@ public class Interfaz {
 		ingresarPersonas.add(lblNewLabel_2_1);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(77, 255, 89, 23);
+		btnGuardar.setBounds(31, 255, 89, 23);
 		ingresarPersonas.add(btnGuardar);
 		
 		JButton btnVerLista = new JButton("Ver lista");
-		btnVerLista.setBounds(230, 255, 89, 23);
+		btnVerLista.setBounds(151, 255, 89, 23);
 		ingresarPersonas.add(btnVerLista);
+		
+		JButton btn_grafo = new JButton("Grafo");
+		btn_grafo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame frame= new JFrame("JavaTutorial.net");    
+		        frame.getContentPane().add(new JFrameGraphics());
+		        frame.setSize(300, 300);
+		        frame.setTitle("Grafo");
+		        frame.setVisible(true);
+		        frame.setResizable(false); 
+			}
+		});
+		btn_grafo.setBounds(271, 255, 89, 23);
+		ingresarPersonas.add(btn_grafo);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(144, 238, 144));
@@ -160,21 +185,40 @@ public class Interfaz {
 		frame.getContentPane().add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JButton btn_volver = new JButton("Volver");
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("Lista");
+		lblNewLabel_2_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(28)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(39, Short.MAX_VALUE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(182)
+							.addComponent(lblNewLabel_2_1_1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(27)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(30, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(163, Short.MAX_VALUE)
+					.addComponent(btn_volver, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(161))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(41)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(136, Short.MAX_VALUE))
+					.addContainerGap()
+					.addComponent(lblNewLabel_2_1_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+					.addGap(18)
+					.addComponent(btn_volver)
+					.addGap(30))
 		);
+		table.setCellSelectionEnabled(true);
 		
 		
 		table.setModel(new DefaultTableModel(
@@ -200,9 +244,11 @@ public class Interfaz {
 				//me parece que no hace falta, ya se esta parado en ese tablero
 				ingresarPersonas.setVisible(true);
 				//Agrego la persona
-				agregarPersona();
-				agregarDatosLista();
-				limpioDatos();
+				if(validar()) {
+					agregarPersona();
+					agregarDatosLista();
+					limpioDatos();
+				}
 				//panel.setVisible(false);
 				
 			}});
@@ -252,6 +298,24 @@ public class Interfaz {
 		 
 		 ((DefaultTableModel) table.getModel()).addRow(fila);
 	}
+	
+	 public void paint(Graphics g){
+	        //Valores del grafo
+		 	int xValues[] = {25, 145, 25, 145, 25};
+	        int yValues[] = {25, 25, 145, 145, 25};
+	        int points = 5;        
+	        g.drawPolygon(xValues, yValues, points);
+	 }
+	 
+	 //Funcion validar, si hay algun error, devuleve false
+	 public boolean validar() {
+		 if(txt_nombre.getText().equals("")) {
+			 JOptionPane.showMessageDialog(txt_nombre, "No se ingreso nombre");
+			 txt_nombre.grabFocus();
+			 return false;
+		 }
+		 return true;
+	 }
 	/**
 	 * @param label1_1
 	 */

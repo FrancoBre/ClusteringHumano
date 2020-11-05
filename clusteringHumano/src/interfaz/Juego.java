@@ -37,15 +37,6 @@ public class Juego {
 		}
 	}
 	
-	public void eliminarAristaDeMayorPeso() {
-		Arista max = aristas.get(0);
-		
-		for(Arista a : aristas) 
-			if(a.getPeso() > max.getPeso()) max = a;
-		
-		this.grafo.eliminarArista(max);
-	}
-	
 	public Grafo getGrafo() {
 		return grafo;
 	}

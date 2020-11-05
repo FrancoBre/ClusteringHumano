@@ -47,9 +47,12 @@ public class Arista {
 	public boolean equals(Object o) {
 		Arista arista = (Arista) o;
 		
-		if(this.vertice1.equals(arista.getVertice1()) &&
+		if((this.vertice1.equals(arista.getVertice1()) &&
 				this.vertice2.equals(arista.getVertice2()) &&
-				this.peso==arista.getPeso())
+				this.peso==arista.getPeso()) || 
+				(this.vertice2.equals(arista.getVertice1()) &&
+				this.vertice1.equals(arista.getVertice2()) &&
+				this.peso==arista.getPeso()))
 			return true;
 		else return false;
 	}

@@ -149,14 +149,44 @@ class GrafoTest {
 		grafo.agregarArista(a2);
 		grafo.agregarArista(a3);
 		
-		Arista a4 = new Arista(v1, v4);
-		Arista a5 = new Arista(v1, v3);
-		Arista a6 = new Arista(v2, v4);
+		Arista a4 = new Arista(v4, v1);
+		Arista a5 = new Arista(v3, v1);
+		Arista a6 = new Arista(v4, v2);
 		
 		assertTrue(grafo.getAristas().contains(a4));
 		assertTrue(grafo.getAristas().contains(a5));
 		assertTrue(grafo.getAristas().contains(a6));
 	
+	}
+	
+	@Test
+	public void aristasIgualesTest() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(3, 3, 2, 4);
+
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+
+		Arista a = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v1);
+		
+		assertTrue(a.equals(a2));
+	}
+	
+	@Test
+	public void aristasDesigualesTest() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(3, 3, 2, 4);
+		Persona x = new Persona(5, 5, 1, 3);
+
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+
+		Arista a = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		
+		assertFalse(a.equals(a2));
 	}
 	
 	/*

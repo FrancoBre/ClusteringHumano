@@ -24,8 +24,9 @@ public class Grafo {
     }*/
     
     public void agregarArista(Arista arista) {
- 
-    	if(!aristas.contains(arista)) {
+    	Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
+    	
+    	if(!aristas.contains(arista) || !aristas.contains(alReves)) {	
     		vertices.add(arista.getVertice1());
     		vertices.add(arista.getVertice2());
     		aristas.add(arista);
@@ -53,7 +54,16 @@ public class Grafo {
 				aux.add(new Arista(v2, j));
 			}
     		
-    		for(Arista a : aux) this.aristas.add(a);
+    		for(Arista a : aux) {
+    			Arista alReves = new Arista(a.getVertice2(), a.getVertice1());
+    			
+    	    	if(!aristas.contains(a) || !aristas.contains(alReves)) {
+    	    		
+    	    		vertices.add(a.getVertice1());
+    	    		vertices.add(a.getVertice2());
+	    			this.aristas.add(a);
+    	    	}
+    		}
 			
     	}
 		

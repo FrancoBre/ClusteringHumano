@@ -7,12 +7,14 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JScrollBar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
+import Grafo.JFrameGraphics;
 import juego.Persona;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -146,7 +149,7 @@ public class Interfaz {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Ingrese el interes del 1 al 5 por los siguientes temas:");
 		lblNewLabel_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(25, 83, 376, 14);
+		lblNewLabel_1_1.setBounds(25, 88, 357, 14);
 		ingresarPersonas.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Clustering Humano");
@@ -155,12 +158,26 @@ public class Interfaz {
 		ingresarPersonas.add(lblNewLabel_2_1);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(77, 255, 89, 23);
+		btnGuardar.setBounds(31, 255, 89, 23);
 		ingresarPersonas.add(btnGuardar);
 		
 		JButton btnVerLista = new JButton("Ver lista");
-		btnVerLista.setBounds(230, 255, 89, 23);
+		btnVerLista.setBounds(151, 255, 89, 23);
 		ingresarPersonas.add(btnVerLista);
+		
+		JButton btn_grafo = new JButton("Grafo");
+		btn_grafo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame frame= new JFrame("JavaTutorial.net");    
+		        frame.getContentPane().add(new JFrameGraphics());
+		        frame.setSize(300, 300);
+		        frame.setTitle("Grafo");
+		        frame.setVisible(true);
+		        frame.setResizable(false); 
+			}
+		});
+		btn_grafo.setBounds(271, 255, 89, 23);
+		ingresarPersonas.add(btn_grafo);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(144, 238, 144));
@@ -201,6 +218,7 @@ public class Interfaz {
 					.addComponent(btn_volver)
 					.addGap(30))
 		);
+		table.setCellSelectionEnabled(true);
 		
 		
 		table.setModel(new DefaultTableModel(
@@ -226,9 +244,11 @@ public class Interfaz {
 				//me parece que no hace falta, ya se esta parado en ese tablero
 				ingresarPersonas.setVisible(true);
 				//Agrego la persona
-				agregarPersona();
-				agregarDatosLista();
-				limpioDatos();
+				if(validar()) {
+					agregarPersona();
+					agregarDatosLista();
+					limpioDatos();
+				}
 				//panel.setVisible(false);
 				
 			}});
@@ -278,6 +298,24 @@ public class Interfaz {
 		 
 		 ((DefaultTableModel) table.getModel()).addRow(fila);
 	}
+	
+	 public void paint(Graphics g){
+	        //Valores del grafo
+		 	int xValues[] = {25, 145, 25, 145, 25};
+	        int yValues[] = {25, 25, 145, 145, 25};
+	        int points = 5;        
+	        g.drawPolygon(xValues, yValues, points);
+	 }
+	 
+	 //Funcion validar, si hay algun error, devuleve false
+	 public boolean validar() {
+		 if(txt_nombre.getText().equals("")) {
+			 JOptionPane.showMessageDialog(txt_nombre, "No se ingreso nombre");
+			 txt_nombre.grabFocus();
+			 return false;
+		 }
+		 return true;
+	 }
 	/**
 	 * @param label1_1
 	 */

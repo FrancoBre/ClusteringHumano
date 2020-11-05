@@ -12,6 +12,7 @@ public class Juego {
 	private Grafo grafo;
 	private ArrayList<Persona> personas;
 	private ArrayList<Arista> aristas;
+	int tamanioGrafo;
 
 	public Juego() {
 		this.grafo = new Grafo();
@@ -32,22 +33,18 @@ public class Juego {
 			
 			this.grafo.agregarArista(nuevaArista);
 			this.aristas.add(nuevaArista);
+			this.tamanioGrafo=+1;
 		}
 	}
 	
-	public int tamanioGrafo() {
-		return this.grafo.getVertices().size();
-	}
-	
-/*	
-	public Arista aristaDeMayorPeso() {
+	public void eliminarAristaDeMayorPeso() {
+		Arista max = aristas.get(0);
 		
+		for(Arista a : aristas) 
+			if(a.getPeso() > max.getPeso()) max = a;
+		
+		this.grafo.eliminarArista(max);
 	}
-	
-	public int cantComponentesConexas() {
-
-	}
-*/
 	
 	public Grafo getGrafo() {
 		return grafo;

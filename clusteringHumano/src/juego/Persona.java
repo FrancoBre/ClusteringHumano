@@ -22,6 +22,22 @@ public class Persona {
 		else verificarIlegales("espectaculo");
 	}
 	
+	public Persona(int musica, int deportes, int espectaculo, int ciencia, String nombre) {
+		if(musica>=0 && musica<=5) this.m=musica;
+		else verificarIlegales("musica");
+		
+		if(deportes>=0 && deportes<=5) this.d=deportes;
+		else verificarIlegales("deportes");
+		
+		if(espectaculo>=0 && espectaculo<=5) this.e=espectaculo;
+		else verificarIlegales("espectaculo");
+		
+		if(espectaculo>=0 && espectaculo<=5) this.c=ciencia;
+		else verificarIlegales("espectaculo");
+		
+		this.nombre = nombre;
+	}
+	
 	public int indiceDeSimilaridad(Persona j) {
 		return(Math.abs(d-j.getD())+Math.abs(m-j.getM())+Math.abs((e-j.getE()))+Math.abs(c-j.getC()));
 	}

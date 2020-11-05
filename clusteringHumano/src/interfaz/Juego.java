@@ -11,29 +11,24 @@ public class Juego {
 
 	private Grafo grafo;
 	private ArrayList<Persona> personas;
-	private ArrayList<Arista> aristas;
-	int tamanioGrafo;
 
 	public Juego() {
 		this.grafo = new Grafo();
 		this.personas = new ArrayList<Persona>();
 	}
 	
-	public void crearPersona(int m, int d, int e, int c) {
-		this.personas.add(new Persona(m, d, e, c));
+	public void crearPersona(Persona persona) {
+		this.personas.add(persona);
 		crearAristas();
 	}
 	
 	private void crearAristas() {
-		for (int i = 0; i < personas.size(); i++) if(personas.size()>1) {
-			Persona persona = personas.get(i);
-			Persona ultimaPersona = personas.get(personas.size()-1);
+		if(personas.size()>2) {
+			Vertice v1 = new Vertice(personas.get(personas.size()));
+			Vertice v2 = new Vertice(personas.get(personas.size()-1));
+			Arista arista = new Arista(v1, v2);
 			
-			Arista nuevaArista = new Arista((new Vertice(persona)), (new Vertice(ultimaPersona)));
-			
-			this.grafo.agregarArista(nuevaArista);
-			this.aristas.add(nuevaArista);
-			this.tamanioGrafo=+1;
+			this.grafo.agregarArista(arista);
 		}
 	}
 	

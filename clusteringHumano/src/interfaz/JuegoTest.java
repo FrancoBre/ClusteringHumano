@@ -12,15 +12,6 @@ import juego.Vertice;
 class JuegoTest {
 
 	@Test
-	public void crearPersonaTest() {
-		Juego juego = new Juego();
-		juego.crearPersona(3, 2, 1, 5);
-		
-		assertTrue(juego.getPersonas().get(0).equals(new Persona(3, 2, 1, 5)));
-		
-	}
-
-	@Test
 	public void personasVacioTest() {
 		Juego juego = new Juego();
 		
@@ -30,9 +21,44 @@ class JuegoTest {
 	@Test
 	public void personasNoVacioTest() {
 		Juego juego = new Juego();
-		juego.crearPersona(3, 2, 1, 5);
+		Persona persona = new Persona(3, 2, 1, 5);
+		juego.crearPersona(persona);
 		
 		assertTrue(!juego.getPersonas().isEmpty());
+	}
+	
+	@Test
+	public void crearPersonasTest() {
+		Juego juego = new Juego();
+		Persona persona = new Persona(3, 2, 3, 5);
+		Persona persona2 = new Persona(1, 4, 4, 2);
+		
+		juego.crearPersona(persona);
+		juego.crearPersona(persona2);
+		
+		Vertice v1 = new Vertice(persona);
+		Vertice v2 = new Vertice(persona);
+		Arista arista = new Arista(v1, v2);
+		
+		assertTrue(juego.getGrafo().existeArista(arista));
+//		assertTrue(juego.getGrafo().getAristas().get(0).getPeso()==8);
+		assertEquals(8, arista.getPeso());
+
+	}
+	
+	
+	
+	@Test
+	public void crearPersonasRepetidasTest() {
+		Juego juego = new Juego();
+		Persona persona = new Persona(3, 2, 1, 5, "Pepe Grillo");
+		Persona persona2 = new Persona(3, 2, 1, 5, "Pepe Grillo");
+		
+		juego.crearPersona(persona);
+		juego.crearPersona(persona2);
+		
+		assertTrue(juego.getPersonas().contains(persona));
+		assertTrue(juego.getPersonas().contains(persona2));
 	}
 	
 }

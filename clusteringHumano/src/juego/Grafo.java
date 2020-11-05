@@ -33,8 +33,6 @@ public class Grafo {
     }
     
     public void eliminarArista(Arista arista) {
-    	vertices.remove(arista.getVertice1());
-    	vertices.remove(arista.getVertice2());
     	aristas.remove(arista);
     	arista.getVertice1().eliminarVecino(arista.getVertice2());
     	arista.getVertice2().eliminarVecino(arista.getVertice1());

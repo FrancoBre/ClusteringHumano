@@ -25,7 +25,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import Grafo.JFrameGraphics;
-import juego.Persona;
+import logica.Persona;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;

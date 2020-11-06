@@ -1,4 +1,4 @@
-package juego;
+package logica;
 
 public class Persona {
 	

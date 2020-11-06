@@ -1,4 +1,4 @@
-package juego;
+package logica;
 
 import java.util.ArrayList;
 

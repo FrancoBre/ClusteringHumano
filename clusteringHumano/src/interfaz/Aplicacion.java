@@ -2,17 +2,17 @@ package interfaz;
 
 import java.util.ArrayList;
 
-import juego.Arista;
-import juego.Grafo;
-import juego.Persona;
-import juego.Vertice;
+import logica.Arista;
+import logica.Grafo;
+import logica.Persona;
+import logica.Vertice;
 
-public class Juego {
+public class Aplicacion {
 
 	private Grafo grafo;
 	private ArrayList<Persona> personas;
 
-	public Juego() {
+	public Aplicacion() {
 		this.grafo = new Grafo();
 		this.personas = new ArrayList<Persona>();
 	}

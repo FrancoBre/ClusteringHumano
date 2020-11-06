@@ -4,22 +4,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import juego.Arista;
-import juego.Persona;
-import juego.Vertice;
+import logica.Arista;
+import logica.Persona;
+import logica.Vertice;
 
-class JuegoTest {
+class AplicacionTest {
 
 	@Test
 	public void personasVacioTest() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		
 		assertTrue(juego.getPersonas().isEmpty());
 	}
 	
 	@Test
 	public void personasNoVacioTest() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		Persona persona = new Persona(3, 2, 1, 5);
 		juego.crearPersona(persona);
 		
@@ -28,7 +28,7 @@ class JuegoTest {
 	
 	@Test
 	public void crearPersonasTest() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		Persona persona = new Persona(3, 2, 3, 5);
 		Persona persona2 = new Persona(1, 4, 4, 2);
 		
@@ -45,7 +45,7 @@ class JuegoTest {
 	
 	@Test
 	public void crearPersonasTest2() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		Persona persona = new Persona(3, 2, 3, 5);
 		Persona persona2 = new Persona(1, 4, 4, 2);
 		Persona persona3 = new Persona(5, 1, 1, 2);
@@ -69,7 +69,7 @@ class JuegoTest {
 	
 	@Test
 	public void crearPersonasTest3() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		Persona persona = new Persona(3, 2, 3, 5);
 		Persona persona2 = new Persona(1, 4, 4, 2);
 		Persona persona3 = new Persona(5, 1, 1, 2);
@@ -88,7 +88,7 @@ class JuegoTest {
 	
 	@Test
 	public void crearPersonasRepetidasTest() {
-		Juego juego = new Juego();
+		Aplicacion juego = new Aplicacion();
 		Persona persona = new Persona(3, 2, 1, 5, "Pepe Grillo");
 		Persona persona2 = new Persona(3, 2, 1, 5, "Pepe Grillo");
 		

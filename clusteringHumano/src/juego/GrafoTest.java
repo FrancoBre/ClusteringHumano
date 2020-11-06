@@ -111,7 +111,7 @@ class GrafoTest {
 	}
 	
 	@Test
-	public void indiceDeSimilaridadTest() {
+	public void indiceDeSimilaridadTest2() {
 		Persona i = new Persona(3, 2, 3, 5);
 		Persona j = new Persona(1, 4, 4, 2);
 		Vertice v1 = new Vertice(i);
@@ -121,7 +121,28 @@ class GrafoTest {
 	}
 	
 	@Test
-	public void crearGrafoCompletoTest() {
+	public void crearGrafoCompletoTest1() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(3, 3, 2, 4);
+		Persona x = new Persona(5, 5, 1, 3);
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Arista a = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Grafo grafo = new Grafo();
+		
+		grafo.agregarArista(a);
+		grafo.agregarArista(a2);
+		
+		Arista a4 = new Arista(v1, v3);
+		
+		assertTrue(grafo.getAristas().contains(a4));
+
+	}
+	
+	@Test
+	public void crearGrafoCompletoTest2() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(3, 3, 2, 4);
 		Persona x = new Persona(5, 5, 1, 3);
@@ -142,10 +163,12 @@ class GrafoTest {
 		Arista a4 = new Arista(v4, v1);
 		Arista a5 = new Arista(v3, v1);
 		Arista a6 = new Arista(v4, v2);
+		Arista a7 = new Arista(v3, v3);
 		
 		assertTrue(grafo.getAristas().contains(a4));
 		assertTrue(grafo.getAristas().contains(a5));
 		assertTrue(grafo.getAristas().contains(a6));
+		assertFalse(grafo.getAristas().contains(a7));
 	
 	}
 	

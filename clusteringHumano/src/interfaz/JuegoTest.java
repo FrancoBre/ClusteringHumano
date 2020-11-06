@@ -80,7 +80,6 @@ class JuegoTest {
 		juego.crearPersona(persona3);
 		
 		Vertice v1 = new Vertice(persona);
-		Vertice v2 = new Vertice(persona2);
 		Vertice v3 = new Vertice(persona3);
 		Arista arista = new Arista(v3, v1);
 		

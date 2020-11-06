@@ -16,7 +16,9 @@ public class Grafo {
     public void agregarArista(Arista arista) {
     	Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
     	
-    	if(!aristas.contains(arista) || !aristas.contains(alReves)) {	
+    	if(!aristas.contains(arista) || !aristas.contains(alReves) || 
+    			arista.getVertice1().equals(arista.getVertice2())) {	
+    		
     		vertices.add(arista.getVertice1());
     		vertices.add(arista.getVertice2());
     		aristas.add(arista);

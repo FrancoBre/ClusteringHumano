@@ -8,15 +8,6 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 class GrafoTest {
-
-//	@Before		NO SE COMO SE USA ESTO
-//	public void initialize() {
-//		Persona i = new Persona(1, 2, 1, 5);
-//		Persona j = new Persona(3, 3, 2, 4);
-//		Vertice v1 = new Vertice(i);
-//		Vertice v2 = new Vertice(j);
-//		Arista a = new Arista(v1, v2);
-//	}
 	
 	@Test
 	public void insercionDeVecinosTest() {
@@ -36,7 +27,6 @@ class GrafoTest {
 		Persona j = new Persona(3, 3, 2, 4);
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
-		Arista a = new Arista(v1, v2);
 		
 		v1.insertarVecino(v2);
 		v2.insertarVecino(v1);
@@ -188,33 +178,5 @@ class GrafoTest {
 		
 		assertFalse(a.equals(a2));
 	}
-	
-	/*
-	@Test
-	public void crearGrafoConAristasTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
-		Persona x = new Persona(5, 5, 1, 3);
-		Persona y = new Persona(5, 1, 2, 2);
-		Vertice v1 = new Vertice(i);
-		Vertice v2 = new Vertice(j);
-		Vertice v3 = new Vertice(x);
-		Vertice v4 = new Vertice(y);
-		Arista a = new Arista(v1, v2);
-		Arista a2 = new Arista(v2, v3);
-		Arista a3 = new Arista(v3, v4);
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
-		aristas.add(a);
-		aristas.add(a2);
-		Grafo g = new Grafo(aristas);
-		
-		assertTrue(g.existeArista(a));
-		assertTrue(g.existeArista(a2));
-		
-		g.agregarArista(a3);
-		
-		assertTrue(g.existeArista(a3));
-		
-	}*/
 	
 }

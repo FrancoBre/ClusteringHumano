@@ -2,6 +2,8 @@ package juego;
 
 import java.util.ArrayList;
 
+import interfaz.Juego;
+
 public class Grafo {
 	private ArrayList<Vertice> vertices;
     private ArrayList<Arista> aristas;
@@ -10,18 +12,6 @@ public class Grafo {
     	this.vertices = new ArrayList<Vertice>();
     	this.aristas = new ArrayList<Arista>();
     }
-    
-    /*
-    public Grafo(ArrayList<Arista> aristas) {
-    	this.aristas = aristas;
-    	this.vertices = new ArrayList<Vertice>();
-
-    	for(int i=0; i<vertices.size(); i++) { 
-    		this.vertices.add(aristas.get(i).getVertice1());
-    		this.vertices.add(aristas.get(i).getVertice2());
-    	}
-
-    }*/
     
     public void agregarArista(Arista arista) {
     	Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
@@ -76,7 +66,8 @@ public class Grafo {
     }
     
     public boolean existeArista(Arista arista) {
-    	return this.aristas.contains(arista);
+		Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
+    	return this.aristas.contains(arista) || this.aristas.contains(alReves);
     }
 
 	public ArrayList<Vertice> getVertices() {
@@ -94,4 +85,29 @@ public class Grafo {
 	public void setAristas(ArrayList<Arista> aristas) {
 		this.aristas = aristas;
 	}
+	
+	public static void main(String[] args) {
+		Grafo grafo = new Grafo();
+		Persona persona = new Persona(3, 2, 3, 5, "Juan Carlos Pachorra");
+		Persona persona2 = new Persona(1, 4, 4, 2, "Horacio Gómez");
+		Persona persona3 = new Persona(5, 1, 1, 2, "Pedro Arrizabalaga");
+		Persona persona4 = new Persona(5, 2, 5, 5, "Natalia Furtado");
+		Vertice v1 = new Vertice(persona);
+		Vertice v2 = new Vertice(persona2);
+		Vertice v3 = new Vertice(persona3);
+		Vertice v4 = new Vertice(persona4);
+		Arista a = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		
+		grafo.agregarArista(a);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		
+		for (int i = 0; i < grafo.getAristas().size(); i++) {
+			System.out.println(grafo.getAristas().get(i).toString());
+		}	
+
+	}
+	
 }

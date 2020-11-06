@@ -106,7 +106,7 @@ public class Persona {
 	
 	@Override
 	public String toString() {
-		return nombre+"\nindices de gustos:\nmusica= "+m+", "
+		return nombre+". Indices de gustos: musica= "+m+", "
 				+ "deportes= "+d+", espectaculo= "+e+", ciencia= "+c;
 				
 	}

@@ -59,7 +59,7 @@ public class Arista {
 	
 	@Override
 	public String toString() {
-		return "Vertices en esta arista= "+this.vertice1.toString()+", "
+		return "Arista con peso "+peso+"\n\nVertice 1=\n"+this.vertice1.toString()+"\nVertice 2= \n"
 					+this.vertice2.toString();
 	}
 	

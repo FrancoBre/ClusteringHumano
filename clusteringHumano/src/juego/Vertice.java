@@ -61,11 +61,11 @@ public class Vertice {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("["+this.i.toString()+"].\nCon los vecinos: ");
+		string.append(i.toString()+"\nCon los vecinos: {");
 		
-		for (int i = 0; i < this.vecinos.size(); i++) 
-			string.append(vecinos.get(i).toString());
-		
+		for(Vertice v : vecinos) 
+			string.append(v.getPersona().toString()+"}\n");
+			
 		return string.toString();
 		
 	}

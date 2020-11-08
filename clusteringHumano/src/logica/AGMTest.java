@@ -149,34 +149,30 @@ class AGMTest {
 	}
 	
 	@Test
-	public void hayCicloTest() {
+	public void noFormaCicloTest2() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(3, 5, 1, 4);
 		Persona x = new Persona(1, 2, 1, 5);
-		Persona y = new Persona(3, 5, 5, 1);
 		
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Vertice v3 = new Vertice(x);
-		Vertice v4 = new Vertice(y);
 		
 		Arista a1 = new Arista(v1, v2);
 		Arista a2 = new Arista(v2, v3);
-		Arista a3 = new Arista(v3, v4);
 		
 		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
-		g.agregarArista(a3);
 		
 		AGM agm = new AGM();
 		
-		assertTrue(agm.formaCiclo(g, a1));
+		assertFalse(agm.formaCiclo(g, a2));
 	}
 	
 	@Test
-	public void noHayCicloTest() {
+	public void formaCicloTest() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(3, 5, 1, 4);
 		Persona x = new Persona(1, 2, 1, 5);
@@ -186,16 +182,17 @@ class AGMTest {
 		Vertice v3 = new Vertice(x);
 		
 		Arista a1 = new Arista(v1, v2);
-		Arista a3 = new Arista(v3, v1);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v1, v3);
 		
 		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
-		g.agregarArista(a3);
+		g.agregarArista(a2);
 		
 		AGM agm = new AGM();
 		
-		assertTrue(!agm.formaCiclo(g, a1));
+		assertTrue(agm.formaCiclo(g, a3));
 	}
 
 }

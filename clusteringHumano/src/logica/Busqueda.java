@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Busqueda {
 	
+	//BFS
 	public static boolean esConexo(Grafo grafo) {
 		if(grafo.getAristas().isEmpty()) return false;
 		

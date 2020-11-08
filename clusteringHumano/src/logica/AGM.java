@@ -21,18 +21,18 @@ public class AGM extends Grafo{
 	
 	//Kruskal
 	public void crearAGM(Grafo g) {
-		ArrayList<Arista> eT = g.getAristas();
+		ArrayList<Arista> aux = g.getAristas();
 		
-		for(int i = 0 ; i < eT.size()-1 ; i++) {
+		for(int i = 0 ; i < g.getAristas().size()-1 ; i++) {
 			
 			for(Arista a : g.getAristas()) {
 				
-				if(tienePesoMinimo(eT, a) &&
-					!aristas.contains(a) &&
+				if(tienePesoMinimo(aux, a) &&
+					!this.aristas.contains(a) &&
 					!formaCiclo(g, a)) {
 					
 					this.agregarArista(a);
-					eT.remove(a);
+					aux.remove(a);
 					
 				}
 			}
@@ -51,10 +51,14 @@ public class AGM extends Grafo{
 	//Devuelve si el segundo vertice de la arista es alcanzable a partir del primer vertice
 	//caso para el cual el grafo con esa arista formaria ciclo
 	public boolean formaCiclo(Grafo grafo, Arista arista) {
-		return(Busqueda.alcanzablesDesde(grafo, arista.getVertice1()).
+		Grafo aux = grafo;
+		aux.eliminarArista(arista);
+		
+		return(Busqueda.alcanzablesDesde(aux, arista.getVertice1()).
 				contains(arista.getVertice2()))?true:false;
 	}
 	
+	//No relaciona a todos con todos como en la clase Grafo, que crea un grafo completo
 	@Override
 	public void agregarArista(Arista arista) {
 		Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());

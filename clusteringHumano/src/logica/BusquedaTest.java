@@ -81,7 +81,7 @@ class BusquedaTest {
 	}
 	
 	@Test
-	public void alcanzablesDesdeTest() {
+	public void alcanzablesDesdeTest1() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(4, 2, 5, 5);
 		Persona x = new Persona(3, 1, 2, 4);
@@ -111,6 +111,80 @@ class BusquedaTest {
 		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v3));
 		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v4));
 		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v5));
+		
+	}
+	
+	@Test
+	public void alcanzablesDesdeTest2() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(4, 2, 5, 5);
+		Persona x = new Persona(3, 1, 2, 4);
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+
+		Grafo g = new Grafo();
+		
+		g.agregarArista(a1);
+		g.agregarArista(a2);
+		
+		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v2));
+		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v3));
+		
+	}
+	
+	@Test
+	public void noAlcanzablesDesdeTest1() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(4, 2, 5, 5);
+		Persona x = new Persona(3, 1, 2, 4);
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v1, v3);
+
+		Grafo g = new Grafo();
+		
+		g.agregarArista(a1);
+		g.agregarArista(a2);
+		g.eliminarArista(a3);
+		g.eliminarArista(a2);
+		
+		assertFalse(Busqueda.alcanzablesDesde(g, v1).contains(v3));
+		assertTrue(g.getVertices().contains(v3));
+		
+	}
+	
+	@Test
+	public void noAlcanzablesDesdeTest2() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(4, 2, 5, 5);
+		Persona x = new Persona(3, 1, 2, 4);
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+
+		Grafo g = new Grafo();
+		
+		g.agregarArista(a1);
+		g.agregarArista(a2);
+		g.eliminarArista(a1);
+		g.eliminarArista(a2);
+		
+		assertTrue(Busqueda.alcanzablesDesde(g, v1).contains(v3));
+		assertTrue(g.getVertices().contains(v2));
 		
 	}
 

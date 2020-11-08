@@ -17,9 +17,20 @@ public class Grafo {
     	if((!aristas.contains(arista) || !aristas.contains(alReves)) && 
     			!arista.getVertice1().equals(arista.getVertice2())) {	
     		
-    		vertices.add(arista.getVertice1());
-    		vertices.add(arista.getVertice2());
     		aristas.add(arista);
+    		
+    		if(!vertices.contains(arista.getVertice1())) 
+    			vertices.add(arista.getVertice1());
+    		else 
+    			this.vertices.get(this.vertices.indexOf(arista.getVertice1()))
+    			.insertarVecino(arista.getVertice2());
+    		
+    		
+    		if(!vertices.contains(arista.getVertice2())) 
+    			vertices.add(arista.getVertice2());
+    		else 
+    			this.vertices.get(this.vertices.indexOf(arista.getVertice2()))
+    			.insertarVecino(arista.getVertice1());
     		
     		aristasGrafoCompleto(arista);
     	}
@@ -49,10 +60,21 @@ public class Grafo {
     			
     	    	if((!aristas.contains(a) || !aristas.contains(alReves)) && 
     	    			!a.getVertice1().equals(a.getVertice2())) {
-    	    		
-    	    		vertices.add(a.getVertice1());
-    	    		vertices.add(a.getVertice2());
+    	    	
 	    			this.aristas.add(a);
+	    			
+	    			if(!vertices.contains(arista.getVertice1())) 
+	        			vertices.add(arista.getVertice1());
+	        		else 
+	        			this.vertices.get(this.vertices.indexOf(arista.getVertice1()))
+	        			.insertarVecino(arista.getVertice2());
+	        		
+	        		
+	        		if(!vertices.contains(arista.getVertice2())) 
+	        			vertices.add(arista.getVertice2());
+	        		else 
+	        			this.vertices.get(this.vertices.indexOf(arista.getVertice2()))
+	        			.insertarVecino(arista.getVertice1());
     	    	}
     		}
 			

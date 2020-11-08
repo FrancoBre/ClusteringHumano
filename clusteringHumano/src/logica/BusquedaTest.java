@@ -138,6 +138,32 @@ class BusquedaTest {
 	}
 	
 	@Test
+	public void alcanzablesDesdeTest3() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(4, 2, 5, 5);
+		Persona x = new Persona(3, 1, 2, 4);
+		Persona y = new Persona(5, 5, 2, 1);
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		
+		Arista a1 = new Arista(v3, v4);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v1, v3);
+
+		Grafo agm = new AGM();
+		
+		agm.agregarArista(a1);
+		agm.agregarArista(a2);
+		agm.agregarArista(a3);
+		
+		assertTrue(Busqueda.alcanzablesDesde(agm, v1).contains(v2));
+		
+	}
+	
+	@Test
 	public void noAlcanzablesDesdeTest1() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(4, 2, 5, 5);

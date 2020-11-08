@@ -51,7 +51,8 @@ public class Busqueda {
 			marcados.put(i, true);
 			
 			for(Vertice v1 : pendientes.getFirst().getVecinos())  
-				if(!marcados.get(v1)) pendientes.add(v1);
+				if(marcados.get(v1)!=null && !marcados.get(v1)) 
+					pendientes.add(v1);
 			
 			pendientes.remove(i);
 			
@@ -66,6 +67,16 @@ public class Busqueda {
 		
 		
 		return alcanzables;
+	}
+	
+	//Devuelve si el segundo vertice de la arista es alcanzable a partir del primer vertice
+	//caso para el cual el grafo con esa arista formaria ciclo
+	public static boolean formaCiclo(Grafo grafo, Arista arista) {	
+		grafo.agregarArista(arista);
+		grafo.eliminarArista(arista);
+		
+		return(alcanzablesDesde(grafo, arista.getVertice1()).
+				contains(arista.getVertice2()))?true:false;
 	}
 	
 	public int distanciaEntre(Grafo grafo, Vertice v1, Vertice v2) {

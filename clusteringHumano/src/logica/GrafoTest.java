@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GrafoTest {
 	
 	@Test
-	public void insercionDeVecinosTest() {
+	public void insercionDeVecinosTest1() {
 		Persona i = new Persona(1, 2, 1, 5);
 		Persona j = new Persona(3, 3, 2, 4);
 		Vertice v1 = new Vertice(i);
@@ -16,6 +16,25 @@ class GrafoTest {
 		
 		assertTrue(a.getVertice1().getVecinos().contains(a.getVertice2()));
 		
+	}
+	
+	@Test
+	public void insercionDeVecinosTest2() {
+		Persona i = new Persona(1, 2, 1, 5);
+		Persona j = new Persona(3, 3, 2, 4);
+		Persona y = new Persona(2, 1, 1, 1);
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(y);
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Grafo g = new Grafo();
+		
+		g.agregarArista(a1);
+		g.agregarArista(a2);
+		
+		assertTrue(v1.getVecinos().contains(v2));
+		assertTrue(v1.getVecinos().contains(v3));
 	}
 	
 	@Test

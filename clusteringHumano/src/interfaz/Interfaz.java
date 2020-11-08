@@ -35,7 +35,6 @@ import javax.swing.UIManager;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Interfaz {
-
 	private JFrame frame;
 	private JTextField txt_nombre;
 	

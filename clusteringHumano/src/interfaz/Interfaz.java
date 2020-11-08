@@ -15,6 +15,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,8 +30,10 @@ import logica.Persona;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
+import javax.swing.event.AncestorListener;
 import javax.swing.UIManager;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -91,7 +94,7 @@ public class Interfaz {
 		
 		JPanel ingresarPersonas = new JPanel();
 		ingresarPersonas.setBackground(new Color(102, 205, 170));
-		ingresarPersonas.setBounds(0, 0, 392, 304);
+		ingresarPersonas.setBounds(0, 0, 390, 300);
 		frame.getContentPane().add(ingresarPersonas);
 		
 		JPanel verLista = new JPanel();
@@ -181,31 +184,44 @@ public class Interfaz {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(144, 238, 144));
-		panel.setBounds(389, 0, 410, 304);
+		panel.setBounds(0, 0, 390, 300);
 		frame.getContentPane().add(panel);
+		panel.setVisible(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btn_volver = new JButton("Volver");
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel.setVisible(false);
+				ingresarPersonas.setVisible(true);
+			}
+		});
+		
+		JPanel acerca = new JPanel();
+		acerca.setLayout(null);
+		acerca.setBackground(new Color(51, 204, 204));
+		acerca.setBounds(0, 0, 390, 300);
+		frame.getContentPane().add(acerca);
+		acerca.setVisible(false);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("Lista");
 		lblNewLabel_2_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(182)
-							.addComponent(lblNewLabel_2_1_1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(27)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(30, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(163, Short.MAX_VALUE)
+					.addGap(182)
+					.addComponent(lblNewLabel_2_1_1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(143, Short.MAX_VALUE)
 					.addComponent(btn_volver, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
 					.addGap(161))
+				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -213,7 +229,7 @@ public class Interfaz {
 					.addContainerGap()
 					.addComponent(lblNewLabel_2_1_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btn_volver)
 					.addGap(30))
@@ -230,6 +246,48 @@ public class Interfaz {
 		));
 		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
+		
+		
+		
+		JLabel lblNewLabel_2 = new JLabel("Sobre nosotros");
+		lblNewLabel_2.setBackground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 22));
+		lblNewLabel_2.setBounds(124, 41, 176, 42);
+		acerca.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("C- -: ");
+		lblNewLabel_3_1.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
+		lblNewLabel_3_1.setBounds(30, 70, 59, 66);
+		acerca.add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("Nicol\u00E1s Wendler");
+		lblNewLabel_4.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
+		lblNewLabel_4.setBounds(30, 219, 154, 28);
+		acerca.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Franco Br\u00E9goli");
+		lblNewLabel_5.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
+		lblNewLabel_5.setBounds(30, 141, 153, 28);
+		acerca.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Sabrina Ar\u00E9valo");
+		lblNewLabel_6.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
+		lblNewLabel_6.setBounds(30, 180, 148, 28);
+		acerca.add(lblNewLabel_6);
+		
+		JButton btn_volver_1 = new JButton("Volver");
+		btn_volver_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel.setVisible(false);
+				acerca.setVisible(false);
+				ingresarPersonas.setVisible(true);
+			}
+		});
+		btn_volver_1.setForeground(Color.BLACK);
+		btn_volver_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btn_volver_1.setBounds(153, 252, 89, 23);
+		acerca.add(btn_volver_1);
 		ingresarPersonas.setVisible(true);
 		 // Action boton VerLista
 		btnVerLista.addActionListener(new ActionListener() {
@@ -241,19 +299,30 @@ public class Interfaz {
 		 // Action boton Guardar
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//me parece que no hace falta, ya se esta parado en ese tablero
-				ingresarPersonas.setVisible(true);
-				//Agrego la persona
+				//Agrego la persona si hay un nombre para ingresar
 				if(validar()) {
 					agregarPersona();
 					agregarDatosLista();
 					limpioDatos();
 				}
-				//panel.setVisible(false);
 				
 			}});
-	
-		frame.setBounds(100, 100, 809, 343);
+		
+		JButton btn_info = new JButton("");
+		btn_info.setBackground(new Color(64, 224, 208));
+		Image img_info = new ImageIcon(this.getClass().getResource("/informacion.png")).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+		btn_info.setIcon(new ImageIcon(img_info));
+		btn_info.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ingresarPersonas.setVisible(false);
+				panel.setVisible(false);
+				acerca.setVisible(true);
+			}
+		});
+		btn_info.setBounds(352, 0, 30, 23);
+		ingresarPersonas.add(btn_info);
+		
+		frame.setBounds(100, 100, 399, 332);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 

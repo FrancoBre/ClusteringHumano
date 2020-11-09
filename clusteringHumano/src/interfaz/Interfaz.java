@@ -40,7 +40,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class Interfaz {
 	private JFrame frame;
 	private JTextField txt_nombre;
-	
+	Aplicacion juego = new Aplicacion();
 	//Declaro las variables aca para tenerlas para las funciones
 	JSpinner itm_musica = new JSpinner();
 	JSpinner itm_deporte = new JSpinner();
@@ -334,12 +334,15 @@ public class Interfaz {
 	}
 	
 	public void agregarPersona() {
+		//guardo los datos en variables locales
 		this.deporte = (int) itm_deporte.getValue();
 		this.musica = (int) itm_musica.getValue();
 		this.espectaculo = (int) itm_espectaculo.getValue();
 		this.ciencia = (int) itm_ciencia.getValue();
 		//Agrego la persona con sus datos
 		Persona p = new Persona(musica, deporte, espectaculo, ciencia);
+		//creo la persona
+		juego.crearPersona(p);
 		this.nombre = txt_nombre.getText();
 		p.setNombre(nombre);
 		System.out.println(p);
@@ -386,9 +389,5 @@ public class Interfaz {
 		 }
 		 return true;
 	 }
-	/**
-	 * @param label1_1
-	 */
-	public void fuente(JLabel label) {
-	}
+
 }

@@ -14,10 +14,10 @@ public class Grafo {
     public void agregarArista(Arista arista) {
     	Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
     	
-    	if((!aristas.contains(arista) || !aristas.contains(alReves)) && 
+    	if((!getAristas().contains(arista) || !getAristas().contains(alReves)) && 
     			!arista.getVertice1().equals(arista.getVertice2())) {	
     		
-    		aristas.add(arista);
+    		getAristas().add(arista);
     		
     		if(!vertices.contains(arista.getVertice1())) 
     			vertices.add(arista.getVertice1());
@@ -38,10 +38,10 @@ public class Grafo {
     }
     
     private void aristasGrafoCompleto(Arista arista) {
-	    if(this.aristas.size() >= 2) {
+	    if(this.getAristas().size() >= 2) {
 	    	ArrayList<Arista> aux = new ArrayList<Arista>();
 	    	
-    		for(Arista a : this.aristas) {
+    		for(Arista a : this.getAristas()) {
 				Vertice i = a.getVertice1();
 				Vertice j = a.getVertice2();
 				
@@ -58,10 +58,10 @@ public class Grafo {
     		for(Arista a : aux) {
     			Arista alReves = new Arista(a.getVertice2(), a.getVertice1());
     			
-    	    	if((!aristas.contains(a) || !aristas.contains(alReves)) && 
+    	    	if((!getAristas().contains(a) || !getAristas().contains(alReves)) && 
     	    			!a.getVertice1().equals(a.getVertice2())) {
     	    	
-	    			this.aristas.add(a);
+	    			this.getAristas().add(a);
 	    			
 	    			if(!vertices.contains(arista.getVertice1())) 
 	        			vertices.add(arista.getVertice1());
@@ -83,14 +83,14 @@ public class Grafo {
 	}
 
 	public void eliminarArista(Arista arista) {
-    	aristas.remove(arista);
+    	getAristas().remove(arista);
     	arista.getVertice1().eliminarVecino(arista.getVertice2());
     	arista.getVertice2().eliminarVecino(arista.getVertice1());
     }
     
     public boolean existeArista(Arista arista) {
 		Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
-    	return this.aristas.contains(arista) || this.aristas.contains(alReves);
+    	return this.getAristas().contains(arista) || this.getAristas().contains(alReves);
     }
 
 	public ArrayList<Vertice> getVertices() {

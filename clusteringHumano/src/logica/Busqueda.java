@@ -78,14 +78,6 @@ public class Busqueda {
 		return(alcanzablesDesde(grafo, arista.getVertice1()).
 				contains(arista.getVertice2()))?true:false;
 	}
-	
-	public int distanciaEntre(Grafo grafo, Vertice v1, Vertice v2) {
-		return 0;
-	}
-	
-	public int cantComponentesConexas(Grafo grafo) {
-		return 0;
-	}
 
 	private static Map<Vertice, Boolean> inicializarMarcados(Grafo grafo) {
 		Map <Vertice, Boolean> marcados = new HashMap <Vertice, Boolean>(); 	

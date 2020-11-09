@@ -205,6 +205,22 @@ public class Interfaz {
 		frame.getContentPane().add(acerca);
 		acerca.setVisible(false);
 		
+		JButton btn_info = new JButton("");
+		btn_info.setBackground(new Color(64, 224, 208));
+		Image img_info = new ImageIcon(this.getClass().getResource("/informacion.png")).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+		btn_info.setIcon(new ImageIcon(img_info));
+		btn_info.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ingresarPersonas.setVisible(false);
+				panel.setVisible(false);
+				acerca.setVisible(true);
+			}
+		});
+		btn_info.setBounds(352, 0, 30, 23);
+		ingresarPersonas.add(btn_info);
+		//saca el focus del boton de info
+		btn_info.setFocusable(false);
+		
 		JLabel lblNewLabel_2_1_1 = new JLabel("Lista");
 		lblNewLabel_2_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -246,8 +262,6 @@ public class Interfaz {
 		));
 		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
-		
-		
 		
 		JLabel lblNewLabel_2 = new JLabel("Sobre nosotros");
 		lblNewLabel_2.setBackground(new Color(255, 255, 255));
@@ -308,19 +322,6 @@ public class Interfaz {
 				
 			}});
 		
-		JButton btn_info = new JButton("");
-		btn_info.setBackground(new Color(64, 224, 208));
-		Image img_info = new ImageIcon(this.getClass().getResource("/informacion.png")).getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
-		btn_info.setIcon(new ImageIcon(img_info));
-		btn_info.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ingresarPersonas.setVisible(false);
-				panel.setVisible(false);
-				acerca.setVisible(true);
-			}
-		});
-		btn_info.setBounds(352, 0, 30, 23);
-		ingresarPersonas.add(btn_info);
 		
 		frame.setBounds(100, 100, 399, 332);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

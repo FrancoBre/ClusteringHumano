@@ -12,11 +12,6 @@ public class GCompleto extends Grafo{
     	this.vertices = new ArrayList<Vertice>();
     	this.aristas = new ArrayList<Arista>();
     }
-    
-    public GCompleto(ArrayList<Vertice> vertices, ArrayList<Arista> aristas) {
-    	this.vertices = vertices;
-    	this.aristas = aristas;
-    }
 	
 	@Override
 	public void agregarArista(Arista arista) {

@@ -27,7 +27,6 @@ public class Grafo {
     		if(!this.getVertices().contains(arista.getVertice2())) {
     			this.getVertices().add(arista.getVertice2());
     		}
-    		
     	}
 	}
 

@@ -64,5 +64,4 @@ public class AGM extends Grafo{
 		
 		return min.equals(arista);
 	}
-	
 }

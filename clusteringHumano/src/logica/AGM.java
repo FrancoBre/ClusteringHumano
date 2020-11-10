@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
+//Arbol generador minimo
 public class AGM extends Grafo{
 	
 	private ArrayList<Arista> aristas;
@@ -64,24 +65,4 @@ public class AGM extends Grafo{
 		return min.equals(arista);
 	}
 	
-	//No relaciona a todos con todos como en la clase Grafo, que crea un grafo completo
-	@Override
-	public void agregarArista(Arista arista) {
-		Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
-    	
-    	if((!this.getAristas().contains(arista) || !this.getAristas().contains(alReves)) && 
-    			!arista.getVertice1().equals(arista.getVertice2())) {	
-	    		
-    		this.getAristas().add(arista);
-	    	 
-    		if(!this.getVertices().contains(arista.getVertice1())) {
-    			this.getVertices().add(arista.getVertice1());
-    		}
-    		
-    		if(!this.getVertices().contains(arista.getVertice2())) {
-    			this.getVertices().add(arista.getVertice2());
-    		}
-    		
-    	}
-	}
 }

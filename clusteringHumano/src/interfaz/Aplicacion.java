@@ -3,6 +3,7 @@ package interfaz;
 import java.util.ArrayList;
 
 import logica.Arista;
+import logica.GCompleto;
 import logica.Grafo;
 import logica.Persona;
 import logica.Vertice;
@@ -13,7 +14,7 @@ public class Aplicacion {
 	private ArrayList<Persona> personas;
 
 	public Aplicacion() {
-		this.grafo = new Grafo();
+		this.grafo = new GCompleto();
 		this.personas = new ArrayList<Persona>();
 	}
 	

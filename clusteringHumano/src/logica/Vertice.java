@@ -11,11 +11,6 @@ public class Vertice {
 		this.vecinos = new ArrayList<Vertice>();
 		this.i = persona;
 	}
-	
-//	public Vertice(Persona persona, ArrayList<Vertice> vecinos) {
-//		this.i = persona;
-//		this.vecinos = vecinos;
-//	}
  
 	public void insertarVecino(Vertice vertice) {
 		if(this.vecinos==null) System.out.println("vecinos es null");

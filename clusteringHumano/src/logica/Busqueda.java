@@ -21,7 +21,7 @@ public class Busqueda {
 			marcados.put(i, true);
 			
 			for(Vertice v : pendientes.getFirst().getVecinos())  
-				if(!marcados.get(v)) pendientes.add(v);
+				if(marcados.get(v)!=null && !marcados.get(v)) pendientes.add(v);
 			
 			pendientes.remove(i);
 			
@@ -72,11 +72,23 @@ public class Busqueda {
 	//Devuelve si el segundo vertice de la arista es alcanzable a partir del primer vertice
 	//caso para el cual el grafo con esa arista formaria ciclo
 	public static boolean formaCiclo(Grafo grafo, Arista arista) {	
+		boolean ret;
+		boolean yaConteniaV1 = false;	//Si ya contenia al vertice 1 o al vertice 2,
+		boolean yaConteniaV2 = false;	//no se elimina del grafo, para dejarlo como estaba
+		
+		if(grafo.getVertices().contains(arista.getVertice1())) yaConteniaV1 = true;
+		if(grafo.getVertices().contains(arista.getVertice2())) yaConteniaV2 = true;
+		
 		grafo.agregarArista(arista);
 		grafo.eliminarArista(arista);
 		
-		return(alcanzablesDesde(grafo, arista.getVertice1()).
-				contains(arista.getVertice2()))?true:false;
+		ret = alcanzablesDesde(grafo, arista.getVertice1()).
+				contains(arista.getVertice2());
+		
+		if(!yaConteniaV1) grafo.eliminarVertice(arista.getVertice1());
+		if(!yaConteniaV2) grafo.eliminarVertice(arista.getVertice2());
+		
+		return ret;
 	}
 
 	private static Map<Vertice, Boolean> inicializarMarcados(Grafo grafo) {
@@ -88,6 +100,15 @@ public class Busqueda {
 		
 		return marcados;
 	}
+	
+	public static ArrayList<Vertice> vecinosDe(Grafo grafo, Vertice v) {
+		
+		for(Vertice v1 : grafo.getVertices()) {
+			if(v.equals(v1)) return v1.getVecinos();
+		}
+
+		return new ArrayList<Vertice>();
+		
+	}
+	
 }
-
-

@@ -257,7 +257,7 @@ public class Interfaz {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Deporte", "M\u00FAsica", "Espect·culo", "Ciencia"
+				"Nombre", "Deporte", "M\u00FAsica", "Espect√°culo", "Ciencia"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -339,11 +339,13 @@ public class Interfaz {
 		this.musica = (int) itm_musica.getValue();
 		this.espectaculo = (int) itm_espectaculo.getValue();
 		this.ciencia = (int) itm_ciencia.getValue();
+		this.nombre = (String) txt_nombre.getText();
+		
 		//Agrego la persona con sus datos
-		Persona p = new Persona(musica, deporte, espectaculo, ciencia);
+		Persona p = new Persona(musica, deporte, espectaculo, ciencia, nombre);
 		//creo la persona
 		juego.crearPersona(p);
-		this.nombre = txt_nombre.getText();
+	
 		p.setNombre(nombre);
 		System.out.println(p);
 	}

@@ -14,8 +14,8 @@ public class Arista {
 		this.vertice1 = vertice1;
 		this.vertice2 = vertice2;
 		this.peso = vertice1.getPersona().indiceDeSimilaridad(vertice2.getPersona());
-		vertice1.insertarVecino(vertice2);
-		vertice2.insertarVecino(vertice1);
+		if(vertice2!=null) vertice1.insertarVecino(vertice2);
+		if(vertice1!=null) vertice2.insertarVecino(vertice1);
 	}
 
 	public Vertice getVertice1() {
@@ -63,4 +63,3 @@ public class Arista {
 	}
 	
 }
-

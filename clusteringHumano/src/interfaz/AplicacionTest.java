@@ -20,7 +20,7 @@ class AplicacionTest {
 	@Test
 	public void personasNoVacioTest() {
 		Aplicacion juego = new Aplicacion();
-		Persona persona = new Persona(3, 2, 1, 5);
+		Persona persona = new Persona(3, 2, 1, 5, "");
 		juego.crearPersona(persona);
 		
 		assertTrue(!juego.getPersonas().isEmpty());
@@ -29,8 +29,8 @@ class AplicacionTest {
 	@Test
 	public void crearPersonasTest() {
 		Aplicacion juego = new Aplicacion();
-		Persona persona = new Persona(3, 2, 3, 5);
-		Persona persona2 = new Persona(1, 4, 4, 2);
+		Persona persona = new Persona(3, 2, 3, 5, "");
+		Persona persona2 = new Persona(1, 4, 4, 2, "");
 		
 		juego.crearPersona(persona);
 		juego.crearPersona(persona2);
@@ -46,9 +46,9 @@ class AplicacionTest {
 	@Test
 	public void crearPersonasTest2() {
 		Aplicacion juego = new Aplicacion();
-		Persona persona = new Persona(3, 2, 3, 5);
-		Persona persona2 = new Persona(1, 4, 4, 2);
-		Persona persona3 = new Persona(5, 1, 1, 2);
+		Persona persona = new Persona(3, 2, 3, 5, "");
+		Persona persona2 = new Persona(1, 4, 4, 2, "");
+		Persona persona3 = new Persona(5, 1, 1, 2, "");
 		
 		juego.crearPersona(persona);
 		juego.crearPersona(persona2);
@@ -70,9 +70,9 @@ class AplicacionTest {
 	@Test
 	public void crearPersonasTest3() {
 		Aplicacion juego = new Aplicacion();
-		Persona persona = new Persona(3, 2, 3, 5);
-		Persona persona2 = new Persona(1, 4, 4, 2);
-		Persona persona3 = new Persona(5, 1, 1, 2);
+		Persona persona = new Persona(3, 2, 3, 5, "");
+		Persona persona2 = new Persona(1, 4, 4, 2, "");
+		Persona persona3 = new Persona(5, 1, 1, 2, "");
 		
 		juego.crearPersona(persona);
 		juego.crearPersona(persona2);

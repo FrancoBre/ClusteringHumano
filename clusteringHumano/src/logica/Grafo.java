@@ -11,6 +11,11 @@ public class Grafo {
     	this.aristas = new ArrayList<Arista>();
     }
     
+    public Grafo(ArrayList<Vertice> vertices, ArrayList<Arista> aristas) {
+    	this.vertices = vertices;
+    	this.aristas = aristas;
+    }
+    
     public void agregarArista(Arista arista) {
     	Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
     	
@@ -19,18 +24,12 @@ public class Grafo {
     		
     		getAristas().add(arista);
     		
-    		if(!vertices.contains(arista.getVertice1())) 
-    			vertices.add(arista.getVertice1());
-    		else 
-    			this.vertices.get(this.vertices.indexOf(arista.getVertice1()))
-    			.insertarVecino(arista.getVertice2());
+    		if(!getVertices().contains(arista.getVertice1())) 
+    			getVertices().add(arista.getVertice1());
+
     		
-    		
-    		if(!vertices.contains(arista.getVertice2())) 
-    			vertices.add(arista.getVertice2());
-    		else 
-    			this.vertices.get(this.vertices.indexOf(arista.getVertice2()))
-    			.insertarVecino(arista.getVertice1());
+    		if(!getVertices().contains(arista.getVertice2())) 
+    			getVertices().add(arista.getVertice2());
     		
     		aristasGrafoCompleto(arista);
     	}
@@ -63,23 +62,15 @@ public class Grafo {
     	    	
 	    			this.getAristas().add(a);
 	    			
-	    			if(!vertices.contains(arista.getVertice1())) 
-	        			vertices.add(arista.getVertice1());
-	        		else 
-	        			this.vertices.get(this.vertices.indexOf(arista.getVertice1()))
-	        			.insertarVecino(arista.getVertice2());
+	    			if(!getVertices().contains(arista.getVertice1())) 
+	        			getVertices().add(arista.getVertice1());
 	        		
-	        		
-	        		if(!vertices.contains(arista.getVertice2())) 
-	        			vertices.add(arista.getVertice2());
-	        		else 
-	        			this.vertices.get(this.vertices.indexOf(arista.getVertice2()))
-	        			.insertarVecino(arista.getVertice1());
+	        		if(!getVertices().contains(arista.getVertice2())) 
+	        			getVertices().add(arista.getVertice2());
+
     	    	}
     		}
-			
-    	}
-		
+		}
 	}
 
 	public void eliminarArista(Arista arista) {
@@ -87,6 +78,10 @@ public class Grafo {
     	arista.getVertice1().eliminarVecino(arista.getVertice2());
     	arista.getVertice2().eliminarVecino(arista.getVertice1());
     }
+	
+	public void eliminarVertice(Vertice vertice) {
+		getVertices().remove(vertice);
+	}
     
     public boolean existeArista(Arista arista) {
 		Arista alReves = new Arista(arista.getVertice2(), arista.getVertice1());
@@ -109,5 +104,8 @@ public class Grafo {
 		this.aristas = aristas;
 	}
 	
-}
+	public Grafo getClone() {
+		return new Grafo(this.vertices, this.aristas);
+	}
 
+}

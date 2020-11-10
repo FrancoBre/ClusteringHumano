@@ -8,8 +8,8 @@ class GrafoTest {
 	
 	@Test
 	public void insercionDeVecinosTest1() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -20,9 +20,9 @@ class GrafoTest {
 	
 	@Test
 	public void insercionDeVecinosTest2() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
-		Persona y = new Persona(2, 1, 1, 1);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
+		Persona y = new Persona(2, 1, 1, 1, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Vertice v3 = new Vertice(y);
@@ -39,8 +39,8 @@ class GrafoTest {
 	
 	@Test
 	public void eliminarVecinosTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		
@@ -59,9 +59,32 @@ class GrafoTest {
 	}
 	
 	@Test
+	public void vecinosIlegalesTest() {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+			
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+			
+		Arista a2 = new Arista(v1, v2);
+		Arista a3 = new Arista(v2, v3);
+		
+		Grafo g = new Grafo();
+			
+		g.agregarArista(a2);
+		g.agregarArista(a3);
+		
+		assertFalse(v1.getVecinos().contains(v1));
+		assertFalse(v2.getVecinos().contains(v2));
+		assertFalse(v3.getVecinos().contains(v3));
+	}
+	
+	@Test
 	public void eliminarAristaTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -77,8 +100,8 @@ class GrafoTest {
 	
 	@Test
 	public void agregarAristaTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -97,8 +120,8 @@ class GrafoTest {
 	
 	@Test
 	public void eliminarAristaIlegalTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -113,8 +136,8 @@ class GrafoTest {
 	
 	@Test
 	public void existeAristaTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -128,8 +151,8 @@ class GrafoTest {
 	
 	@Test
 	public void indiceDeSimilaridadTest2() {
-		Persona i = new Persona(3, 2, 3, 5);
-		Persona j = new Persona(1, 4, 4, 2);
+		Persona i = new Persona(3, 2, 3, 5, "");
+		Persona j = new Persona(1, 4, 4, 2, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Arista a = new Arista(v1, v2);
@@ -138,9 +161,9 @@ class GrafoTest {
 	
 	@Test
 	public void crearGrafoCompletoTest1() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
-		Persona x = new Persona(5, 5, 1, 3);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
+		Persona x = new Persona(5, 5, 1, 3, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Vertice v3 = new Vertice(x);
@@ -159,10 +182,10 @@ class GrafoTest {
 	
 	@Test
 	public void crearGrafoCompletoTest2() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
-		Persona x = new Persona(5, 5, 1, 3);
-		Persona y = new Persona(5, 1, 2, 2);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
+		Persona x = new Persona(5, 5, 1, 3, "");
+		Persona y = new Persona(5, 1, 2, 2, "");
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
 		Vertice v3 = new Vertice(x);
@@ -190,8 +213,8 @@ class GrafoTest {
 	
 	@Test
 	public void aristasIgualesTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
 
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);
@@ -204,9 +227,9 @@ class GrafoTest {
 	
 	@Test
 	public void aristasDesigualesTest() {
-		Persona i = new Persona(1, 2, 1, 5);
-		Persona j = new Persona(3, 3, 2, 4);
-		Persona x = new Persona(5, 5, 1, 3);
+		Persona i = new Persona(1, 2, 1, 5, "");
+		Persona j = new Persona(3, 3, 2, 4, "");
+		Persona x = new Persona(5, 5, 1, 3, "");
 
 		Vertice v1 = new Vertice(i);
 		Vertice v2 = new Vertice(j);

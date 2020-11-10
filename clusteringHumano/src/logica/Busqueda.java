@@ -110,5 +110,4 @@ public class Busqueda {
 		return new ArrayList<Vertice>();
 		
 	}
-	
 }

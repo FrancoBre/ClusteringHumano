@@ -61,5 +61,4 @@ public class Arista {
 		return "Arista con peso "+peso+"\n\nVertice 1=\n"+this.vertice1.toString()+"\nVertice 2= \n"
 					+this.vertice2.toString();
 	}
-	
 }

@@ -75,6 +75,5 @@ public class Vertice {
 			
 		return string.toString();
 		
-	}
-	
+	}	
 }

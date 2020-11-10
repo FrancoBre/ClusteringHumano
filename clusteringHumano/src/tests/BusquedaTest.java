@@ -168,7 +168,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v1, v3);
 
-		Grafo agm = new AGM();
+		Grafo agm = new Grafo();
 		
 		agm.agregarArista(a1);
 		agm.agregarArista(a2);
@@ -247,7 +247,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v4, v5);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -268,7 +268,7 @@ class BusquedaTest {
 		
 		Arista a1 = new Arista(v1, v2);
 		
-		AGM agm = new AGM();
+		Grafo agm = new Grafo();
 		agm.agregarArista(a1);
 		
 		assertFalse(Busqueda.formaCiclo(agm, new Arista(v2, v3)));
@@ -292,7 +292,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v3, v4);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -319,7 +319,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v5, v4);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -366,7 +366,7 @@ class BusquedaTest {
 		Arista a3 = new Arista(v3, v4);
 		Arista a4 = new Arista(v1, v2);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -394,7 +394,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v4, v5);
 
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -423,7 +423,7 @@ class BusquedaTest {
 		Arista a1 = new Arista(v3, v1);
 		Arista a2 = new Arista(v2, v3);
 		
-		AGM g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -481,7 +481,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v1, v2);
 		Arista a3 = new Arista(v2, v3);
 		
-		AGM g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a2);
 		g.agregarArista(a3);
@@ -554,7 +554,7 @@ class BusquedaTest {
 		Arista a1 = new Arista(v1, v2);
 		Arista a2 = new Arista(v2, v3);
 		
-		Grafo agm = new AGM();
+		Grafo agm = new Grafo();
 		
 		agm.agregarArista(a1);
 		agm.agregarArista(a2);
@@ -591,7 +591,7 @@ class BusquedaTest {
 		Arista a3 = new Arista(v4, v5);
 		Arista a4 = new Arista(v5, v1);
 		
-		Grafo agm = new AGM();
+		Grafo agm = new Grafo();
 			
 		agm.agregarArista(a1);
 		agm.agregarArista(a2);

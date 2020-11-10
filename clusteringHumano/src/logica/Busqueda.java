@@ -134,7 +134,6 @@ public class Busqueda {
 				if(a.getPeso() > max.getPeso()) max = a;
 					
 			return max;
-	
 	}
 	
 	public static void eliminarAristaDeMayorPeso(Grafo grafo) {

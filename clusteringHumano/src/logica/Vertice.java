@@ -13,8 +13,6 @@ public class Vertice {
 	}
  
 	public void insertarVecino(Vertice vertice) {
-		if(this.vecinos==null) System.out.println("vecinos es null");
-		if(vertice==null) System.out.println("vecino es null");
 		if(!this.vecinos.contains(vertice) && 
 				!vertice.getPersona().equals(this.getPersona()))
 			this.vecinos.add(vertice);

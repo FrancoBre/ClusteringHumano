@@ -36,7 +36,7 @@ public class AGM extends Grafo{
 				nueva.getVertice1().setVecinos(Busqueda.vecinosDe(this, a.getVertice1()));
 				nueva.getVertice2().setVecinos(Busqueda.vecinosDe(this, a.getVertice2()));
 				
-				if(tienePesoMinimo(aux, a)) { 
+				if(Busqueda.tienePesoMinimo(aux, a)) { 
 					if(!Busqueda.formaCiclo(this, nueva)) {
 						
 						this.agregarArista(nueva);
@@ -56,12 +56,5 @@ public class AGM extends Grafo{
 		}
 	}
 	
-	public boolean tienePesoMinimo(ArrayList<Arista> aristas, Arista arista) {
-		Arista min = aristas.get(0);
-		
-		for(Arista a : aristas) 
-			if(a.getPeso() < min.getPeso()) min = a;
-		
-		return min.equals(arista);
-	}
+	
 }

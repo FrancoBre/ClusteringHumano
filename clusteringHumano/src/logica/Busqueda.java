@@ -108,6 +108,57 @@ public class Busqueda {
 		}
 
 		return new ArrayList<Vertice>();
-		
 	}
+	
+	public static boolean tienePesoMinimo(ArrayList<Arista> aristas, Arista arista) {
+		Arista min = aristas.get(0);
+		
+		for(Arista a : aristas) 
+			if(a.getPeso() < min.getPeso()) min = a;
+		
+		return min.equals(arista);
+	}
+	
+	public static boolean tienePesoMaximo(ArrayList<Arista> aristas, Arista arista) {
+		Arista max = aristas.get(0);
+				
+		for(Arista a : aristas) 
+			if(a.getPeso() > max.getPeso()) max = a;
+				
+		return max.equals(arista);
+	}
+	
+	public static Arista aristaDePesoMaximo(Grafo grafo) {
+		Arista max = grafo.getAristas().get(0);
+		
+		for(Arista a : grafo.getAristas()) 
+			if(a.getPeso() > max.getPeso()) max = a;
+				
+		return max;
+	}
+	
+	public static void eliminarAristaDeMayorPeso(Grafo grafo) {
+		for(Arista a : grafo.getAristas()) {
+			if(Busqueda.tienePesoMaximo(grafo.getAristas(), a)) 
+				grafo.eliminarArista(a);
+		}
+	}
+
+	//Devuelve las componentes conexas (grupos de personas) que quedan al eliminar la arista
+	//de mayor peso en un grafo
+	public static ArrayList<ArrayList<Vertice>> componentesConexas(Grafo grafo) {
+		ArrayList<Vertice> componenteConexa1;
+		ArrayList<Vertice> componenteConexa2;
+		ArrayList<ArrayList<Vertice>> componentesConexas = new ArrayList<ArrayList<Vertice>>();
+		
+		eliminarAristaDeMayorPeso(grafo);
+		componenteConexa1 = (Busqueda.alcanzablesDesde(grafo, aristaDePesoMaximo(grafo).getVertice1()));
+		componenteConexa2 = (Busqueda.alcanzablesDesde(grafo, aristaDePesoMaximo(grafo).getVertice2()));
+		
+		componentesConexas.add(componenteConexa1);
+		componentesConexas.add(componenteConexa2);
+		
+		return componentesConexas;
+	}
+	
 }

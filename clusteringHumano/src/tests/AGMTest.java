@@ -2,8 +2,6 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 import logica.AGM;
@@ -127,58 +125,6 @@ class AGMTest {
 		assertFalse(agm.existeArista(a3));
 		assertFalse(agm.existeArista(a5));
 		assertFalse(agm.existeArista(a6));
-	}
-	
-	@Test
-	public void tienePesoMinimoTest() {
-		Persona i = new Persona(1, 2, 1, 5, "");
-		Persona j = new Persona(1, 2, 1, 5, "");
-		Persona x = new Persona(3, 1, 2, 4, "");
-		Persona y = new Persona(3, 5, 5, 1, "");
-		
-		Vertice v1 = new Vertice(i);
-		Vertice v2 = new Vertice(j);
-		Vertice v3 = new Vertice(x);
-		Vertice v4 = new Vertice(y);
-		
-		Arista a1 = new Arista(v1, v2);
-		Arista a2 = new Arista(v2, v3);
-		Arista a3 = new Arista(v3, v4);
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
-		
-		aristas.add(a1);
-		aristas.add(a2);
-		aristas.add(a3);
-		
-		AGM agm = new AGM();
-		
-		assertTrue(agm.tienePesoMinimo(aristas, a1));
-		
-	}
-	
-	@Test
-	public void noTienePesoMinimoTest() {
-		Persona i = new Persona(1, 2, 1, 5, "");
-		Persona j = new Persona(3, 5, 1, 4, "");
-		Persona x = new Persona(1, 2, 1, 5, "");
-		
-		Vertice v1 = new Vertice(i);
-		Vertice v2 = new Vertice(j);
-		Vertice v3 = new Vertice(x);
-		
-		Arista a1 = new Arista(v1, v2);
-		Arista a2 = new Arista(v2, v3);
-		Arista a3 = new Arista(v1, v3);
-		
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
-		
-		aristas.add(a1);
-		aristas.add(a2);
-		aristas.add(a3);
-		
-		AGM agm = new AGM();
-		
-		assertFalse(agm.tienePesoMinimo(aristas, a1));
 	}
 	
 	@Test 

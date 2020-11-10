@@ -25,7 +25,7 @@ import javax.swing.JTable;
 import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
-import Grafo.JFrameGraphics;
+import grafo.JFrameGraphics;
 import logica.Persona;
 
 import javax.swing.GroupLayout;

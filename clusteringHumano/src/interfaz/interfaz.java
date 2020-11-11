@@ -271,8 +271,8 @@ public class interfaz {
 					
 				ArrayList<Vertice> c1 = cluster.getGrupo1();
 				ArrayList<Vertice> c2 = cluster.getGrupo2();
-				for (int i=0;i<c1.size();i++) {
-					Persona p = c1.get(i).getPersona();
+				for (Vertice v : c1) {
+					Persona p = v.getPersona();
 					int numCols = lista1.getModel().getColumnCount();
 					Object [] fila = new Object[numCols]; 
 					 fila[0] = p.getNombre();
@@ -282,10 +282,9 @@ public class interfaz {
 					 fila[4] = p.getC();
 					 
 					 ((DefaultTableModel) lista1.getModel()).addRow(fila);
-					
 				}
-				for (int i=0;i<c2.size();i++) {
-					Persona p = c2.get(i).getPersona();
+				for (Vertice v : c2) {
+					Persona p = v.getPersona();
 					int numCols = lista2.getModel().getColumnCount();
 					Object [] fila = new Object[numCols]; 
 					fila[0] = p.getNombre();

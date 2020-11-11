@@ -63,7 +63,7 @@ public class Busqueda {
 		//Agregar los vertices de marcados que tengan true
 		for (Vertice v1 : marcados.keySet()) 
 			
-				if(marcados.get(v1)) alcanzables.add(v1);
+				if(marcados.get(v1) && !alcanzables.contains(v1)) alcanzables.add(v1);
 		
 		
 		return alcanzables;

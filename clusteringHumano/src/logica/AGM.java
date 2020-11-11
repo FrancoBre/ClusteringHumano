@@ -8,11 +8,6 @@ public class AGM extends Grafo{
 	private ArrayList<Arista> aristas;
 	private ArrayList<Vertice> vertices;
 	
-	public AGM() {
-		this.vertices = new ArrayList<Vertice>();
-    	this.aristas = new ArrayList<Arista>();
-	}
-	
 	public AGM(Grafo g) {
 		this.vertices = new ArrayList<Vertice>();
     	this.aristas = new ArrayList<Arista>();
@@ -54,7 +49,5 @@ public class AGM extends Grafo{
 				}
 			}
 		}
-	}
-	
-	
+	}	
 }

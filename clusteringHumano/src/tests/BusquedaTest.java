@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import logica.AGM;
 import logica.Arista;
 import logica.Busqueda;
 import logica.GCompleto;
@@ -168,7 +167,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v1, v3);
 
-		Grafo agm = new AGM();
+		Grafo agm = new Grafo();
 		
 		agm.agregarArista(a1);
 		agm.agregarArista(a2);
@@ -247,7 +246,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v4, v5);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -268,7 +267,7 @@ class BusquedaTest {
 		
 		Arista a1 = new Arista(v1, v2);
 		
-		AGM agm = new AGM();
+		Grafo agm = new Grafo();
 		agm.agregarArista(a1);
 		
 		assertFalse(Busqueda.formaCiclo(agm, new Arista(v2, v3)));
@@ -292,7 +291,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v3, v4);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -319,7 +318,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v5, v4);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -366,7 +365,7 @@ class BusquedaTest {
 		Arista a3 = new Arista(v3, v4);
 		Arista a4 = new Arista(v1, v2);
 		
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -394,7 +393,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v2, v3);
 		Arista a3 = new Arista(v4, v5);
 
-		Grafo g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -423,7 +422,7 @@ class BusquedaTest {
 		Arista a1 = new Arista(v3, v1);
 		Arista a2 = new Arista(v2, v3);
 		
-		AGM g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a1);
 		g.agregarArista(a2);
@@ -481,7 +480,7 @@ class BusquedaTest {
 		Arista a2 = new Arista(v1, v2);
 		Arista a3 = new Arista(v2, v3);
 		
-		AGM g = new AGM();
+		Grafo g = new Grafo();
 			
 		g.agregarArista(a2);
 		g.agregarArista(a3);
@@ -540,73 +539,4 @@ class BusquedaTest {
 		
 		assertFalse(Busqueda.tienePesoMinimo(aristas, a1));
 	}	
-	
-	@Test
-	public void componentesConexasTest1() {
-		Persona i = new Persona(1, 2, 1, 5, "");
-		Persona j = new Persona(3, 5, 1, 1, "");
-		Persona x = new Persona(1, 2, 1, 4, "");
-		
-		Vertice v1 = new Vertice(i);
-		Vertice v2 = new Vertice(j);
-		Vertice v3 = new Vertice(x);
-		
-		Arista a1 = new Arista(v1, v2);
-		Arista a2 = new Arista(v2, v3);
-		
-		Grafo agm = new AGM();
-		
-		agm.agregarArista(a1);
-		agm.agregarArista(a2);
-	
-		ArrayList<ArrayList<Vertice>> componentesConexas = Busqueda.componentesConexas(agm); 
-		
-		ArrayList<Vertice> c1 = componentesConexas.get(0);
-		ArrayList<Vertice> c2 = componentesConexas.get(1);
-		 
-		assertTrue(c1.contains(v1)); 
-		assertTrue(c2.contains(v3)); 
-		assertTrue(c2.contains(v3));
-		assertFalse(c1.contains(v2));
-		assertFalse(c1.contains(v3));
-		
-	}
-	
-	@Test
-	public void componentesConexasTest2() {
-		Persona i = new Persona(1, 2, 1, 5, "");
-		Persona j = new Persona(4, 2, 5, 5, "");
-		Persona x = new Persona(3, 1, 2, 4, "");
-		Persona y = new Persona(3, 5, 5, 1, "");
-		Persona z = new Persona(1, 3, 3, 1, "");
-			
-		Vertice v1 = new Vertice(i);
-		Vertice v2 = new Vertice(j);
-		Vertice v3 = new Vertice(x);
-		Vertice v4 = new Vertice(y);
-		Vertice v5 = new Vertice(z);
-			
-		Arista a1 = new Arista(v1, v3);
-		Arista a2 = new Arista(v3, v2);
-		Arista a3 = new Arista(v4, v5);
-		Arista a4 = new Arista(v5, v1);
-		
-		Grafo agm = new AGM();
-			
-		agm.agregarArista(a1);
-		agm.agregarArista(a2);
-		agm.agregarArista(a3);
-		agm.agregarArista(a4);
-	
-		ArrayList<ArrayList<Vertice>> componentesConexas = Busqueda.componentesConexas(agm); 
-		
-		ArrayList<Vertice> c1 = componentesConexas.get(0);
-		ArrayList<Vertice> c2 = componentesConexas.get(1);
-		 
-		assertTrue(c1.contains(v5));
-		assertTrue(c1.contains(v4));
-		assertTrue(c2.contains(v1));
-		assertTrue(c2.contains(v3));
-		assertTrue(c2.contains(v2));
-	}
 }

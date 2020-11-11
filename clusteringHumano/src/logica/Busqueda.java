@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Busqueda {
+	
 	//BFS
 	public static boolean esConexo(Grafo grafo) {
 		if(grafo.getAristas().isEmpty()) return false;
@@ -134,31 +135,9 @@ public class Busqueda {
 				if(a.getPeso() > max.getPeso()) max = a;
 					
 			return max;
-	
 	}
 	
 	public static void eliminarAristaDeMayorPeso(Grafo grafo) {
 		grafo.eliminarArista(aristaDePesoMaximo(grafo));
-	}
-
-	//Devuelve las componentes conexas (grupos de personas) que quedan al eliminar la arista
-	//de mayor peso en un grafo
-	public static ArrayList<ArrayList<Vertice>> componentesConexas(Grafo grafo) {
-		ArrayList<Vertice> componenteConexa1;
-		ArrayList<Vertice> componenteConexa2;
-		ArrayList<ArrayList<Vertice>> componentesConexas = new ArrayList<ArrayList<Vertice>>();
-		
-		Vertice v1 = aristaDePesoMaximo(grafo).getVertice1();
-		Vertice v2 = aristaDePesoMaximo(grafo).getVertice2();
-		
-		grafo.eliminarArista(aristaDePesoMaximo(grafo));
-		
-		componenteConexa1 = (Busqueda.alcanzablesDesde(grafo, v1));
-		componenteConexa2 = (Busqueda.alcanzablesDesde(grafo, v2));
-		
-		componentesConexas.add(componenteConexa1);
-		componentesConexas.add(componenteConexa2);
-		
-		return componentesConexas;
 	}
 }

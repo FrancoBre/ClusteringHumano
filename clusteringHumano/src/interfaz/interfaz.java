@@ -18,6 +18,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -26,7 +27,10 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import grafo.JFrameGraphics;
+import logica.Cluster;
+import logica.Grafo;
 import logica.Persona;
+import logica.Vertice;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -49,10 +53,6 @@ public class interfaz {
 //	private JTable table;
 	DefaultTableModel modelo = new DefaultTableModel();
 	JTable table = new JTable(modelo);
-	DefaultTableModel modelo2 = new DefaultTableModel();
-	JTable table2 = new JTable(modelo);
-	DefaultTableModel modelo3 = new DefaultTableModel();
-	JTable table3 = new JTable(modelo);
 	String nombre = "";
 	int musica = 0;
 	int deporte =0;
@@ -206,9 +206,6 @@ public class interfaz {
 		lista2 = new JTable();
 		scrollPane_lista2.setViewportView(lista2);
 		
-		
-		
-		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btn_volver = new JButton("Volver");
@@ -233,7 +230,10 @@ public class interfaz {
 				panel.setVisible(false);
 				acerca.setVisible(false);
 				listas.setVisible(false);
+				((DefaultTableModel)lista1.getModel()).setNumRows(0);
+				((DefaultTableModel)lista2.getModel()).setNumRows(0);
 			}
+
 		});
 		btnNewButton.setBounds(149, 261, 89, 23);
 		listas.add(btnNewButton);
@@ -266,7 +266,36 @@ public class interfaz {
 			}
 
 			private void cargarListas() {
-				// TODO Auto-generated method stub
+				Grafo g = juego.getGrafo();
+				Cluster cluster = new Cluster(g); 
+					
+				ArrayList<Vertice> c1 = cluster.getGrupo1();
+				ArrayList<Vertice> c2 = cluster.getGrupo2();
+				for (int i=0;i<c1.size();i++) {
+					Persona p = c1.get(i).getPersona();
+					int numCols = lista1.getModel().getColumnCount();
+					Object [] fila = new Object[numCols]; 
+					 fila[0] = p.getNombre();
+					 fila[1] = p.getD();
+					 fila[2] = p.getM();
+					 fila[3] = p.getE();
+					 fila[4] = p.getC();
+					 
+					 ((DefaultTableModel) lista1.getModel()).addRow(fila);
+					
+				}
+				for (int i=0;i<c2.size();i++) {
+					Persona p = c2.get(i).getPersona();
+					int numCols = lista2.getModel().getColumnCount();
+					Object [] fila = new Object[numCols]; 
+					fila[0] = p.getNombre();
+					fila[1] = p.getD();
+					fila[2] = p.getM();
+					fila[3] = p.getE();
+					fila[4] = p.getC();
+					
+					((DefaultTableModel) lista2.getModel()).addRow(fila);
+				}
 				
 			}
 		});
@@ -314,15 +343,14 @@ public class interfaz {
 			}
 		));
 		
-		table2.setModel(new DefaultTableModel(
+		lista1.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Nombre", "Deporte", "Música", "Espectáculo", "Ciencia"
+						"Nombre", "Deporte", "Música", "Espectáculo", "Ciencia"
 				}
-			));
-		
-		table3.setModel(new DefaultTableModel(
+				));
+		lista2.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
@@ -330,8 +358,6 @@ public class interfaz {
 				}
 				));
 		scrollPane.setViewportView(table);
-		scrollPane_lista1.setViewportView(table2);
-		scrollPane_lista2.setViewportView(table3);
 		panel.setLayout(gl_panel);
 		
 		JLabel lblNewLabel_2 = new JLabel("Sobre nosotros");
@@ -444,15 +470,7 @@ public class interfaz {
 		 ((DefaultTableModel) table.getModel()).addRow(fila);
 	}
 	
-	 public void paint(Graphics g){
-	        //Valores del grafo
-		 	int xValues[] = {25, 145, 25, 145, 25};
-	        int yValues[] = {25, 25, 145, 145, 25};
-	        int points = 5;        
-	        g.drawPolygon(xValues, yValues, points);
-	 }
-	 
-	 //Funcion validar, si hay algun error, devuleve false
+	 //Funcion validar, si hay algun error, devuelve false
 	 public boolean validar() {
 		 if(txt_nombre.getText().equals("")) {
 			 JOptionPane.showMessageDialog(txt_nombre, "No se ingreso nombre");
@@ -462,7 +480,4 @@ public class interfaz {
 		 return true;
 	 }
 	 
-	 public void cargarListas() {
-		 //carga las listas con los arrays
-	 }
 }

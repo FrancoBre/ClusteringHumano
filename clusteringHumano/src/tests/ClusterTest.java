@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import interfaz.Aplicacion;
 import logica.AGM;
 import logica.Arista;
 import logica.Cluster;
@@ -177,6 +178,44 @@ class ClusterTest {
 		assertFalse(cluster.getGrupo1().contains(v3) && 
 				cluster.getGrupo1().contains(v4) &&
 				cluster.getGrupo1().contains(v2));
+	}
+	
+	@Test
+	public void clusterTest3() {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		Persona z = new Persona(1, 3, 3, 1, "vertice 5");
+		Persona w = new Persona(1, 5, 5, 1, "vertice 6");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		Vertice v5 = new Vertice(z);
+		Vertice v6 = new Vertice(w);
+		
+		Aplicacion app = new Aplicacion();
+		
+		app.crearPersona(i);
+		app.crearPersona(j);
+		app.crearPersona(x);
+		app.crearPersona(y);
+		app.crearPersona(z);
+		app.crearPersona(w);
+		
+		app.crearAristas();
+		app.crearCluster();
+		
+		assertTrue(app.getGrupo1().contains(v5));
+//		assertTrue(app.getGrupo1().contains(v4));
+//		assertTrue(app.getGrupo1().contains(v6));
+		
+		assertTrue(app.getGrupo2().contains(v1));
+		assertTrue(app.getGrupo1().contains(v2));
+		assertTrue(app.getGrupo1().contains(v3));
+		
 	}
 	
 }

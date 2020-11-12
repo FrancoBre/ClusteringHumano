@@ -273,10 +273,13 @@ public class interfaz {
 				for(Arista a : g.getAristas()) {
 					System.out.println(a.getVertice1().getPersona().getNombre()+" - "+a.getVertice2().getPersona().getNombre());
 				}
-                Cluster cluster = new Cluster(g); 
+				
+				juego.crearCluster();
+				
+                Cluster cluster = juego.getCluster(); 
 
-                ArrayList<Vertice> c1 = cluster.getGrupo1();
-                ArrayList<Vertice> c2 = cluster.getGrupo2();
+                ArrayList<Vertice> c1 = juego.getGrupo1();
+                ArrayList<Vertice> c2 = juego.getGrupo2();
 
                 ArrayList<Object[]> datos1 = new ArrayList<Object[]>();
                 ArrayList<Object[]> datos2 = new ArrayList<Object[]>();
@@ -373,7 +376,7 @@ public class interfaz {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Deporte", "Música", "Espectáculo", "Ciencia"
+				"Nombre", "Deporte", "Mï¿½sica", "Espectï¿½culo", "Ciencia"
 			}
 		));
 		
@@ -381,14 +384,14 @@ public class interfaz {
 				new Object[][] {
 				},
 				new String[] {
-						"Nombre", "Deporte", "Música", "Espectáculo", "Ciencia"
+						"Nombre", "Deporte", "Mï¿½sica", "Espectï¿½culo", "Ciencia"
 				}
 				));
 		lista2.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-						"Nombre", "Deporte", "Música", "Espectáculo", "Ciencia"
+						"Nombre", "Deporte", "Mï¿½sica", "Espectï¿½culo", "Ciencia"
 				}
 				));
 		scrollPane.setViewportView(table);

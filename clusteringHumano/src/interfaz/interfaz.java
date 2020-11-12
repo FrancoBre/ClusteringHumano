@@ -27,6 +27,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import grafo.JFrameGraphics;
+import logica.Arista;
 import logica.Cluster;
 import logica.Grafo;
 import logica.Persona;
@@ -266,35 +267,67 @@ public class interfaz {
 			}
 
 			private void cargarListas() {
+				
 				Grafo g = juego.getGrafo();
-				Cluster cluster = new Cluster(g); 
-					
-				ArrayList<Vertice> c1 = cluster.getGrupo1();
-				ArrayList<Vertice> c2 = cluster.getGrupo2();
-				for (Vertice v : c1) {
-					Persona p = v.getPersona();
-					int numCols = lista1.getModel().getColumnCount();
-					Object [] fila = new Object[numCols]; 
-					 fila[0] = p.getNombre();
-					 fila[1] = p.getD();
-					 fila[2] = p.getM();
-					 fila[3] = p.getE();
-					 fila[4] = p.getC();
+				
+				for(Arista a : g.getAristas()) {
+					System.out.println(a.getVertice1().getPersona().getNombre()+" - "+a.getVertice2().getPersona().getNombre());
+				}
+                Cluster cluster = new Cluster(g); 
+
+                ArrayList<Vertice> c1 = cluster.getGrupo1();
+                ArrayList<Vertice> c2 = cluster.getGrupo2();
+
+                ArrayList<Object[]> datos1 = new ArrayList<Object[]>();
+                ArrayList<Object[]> datos2 = new ArrayList<Object[]>();
+
+                for(Vertice v : c1) {
+                    Object[] info = new Object[] {v.getPersona(), v.getPersona().getC(),v.getPersona().getM(), v.getPersona().getD()};
+                    datos1.add(info);
+                    Object [] fila = new Object[5]; 
+					fila[0] = v.getPersona().getNombre();
+					fila[1] = v.getPersona().getD();
+					fila[2] = v.getPersona().getM();
+					fila[3] = v.getPersona().getE();
+					fila[4] = v.getPersona().getC();
 					 
 					 ((DefaultTableModel) lista1.getModel()).addRow(fila);
-				}
-				for (Vertice v : c2) {
-					Persona p = v.getPersona();
-					int numCols = lista2.getModel().getColumnCount();
-					Object [] fila = new Object[numCols]; 
-					fila[0] = p.getNombre();
-					fila[1] = p.getD();
-					fila[2] = p.getM();
-					fila[3] = p.getE();
-					fila[4] = p.getC();
-					
-					((DefaultTableModel) lista2.getModel()).addRow(fila);
-				}
+                }
+                for(Vertice v : c2) {
+                	Object[] info = new Object[] {v.getPersona(), v.getPersona().getC(),v.getPersona().getM(), v.getPersona().getD()};
+                	datos2.add(info);
+                	Object [] fila = new Object[5]; 
+					fila[0] = v.getPersona().getNombre();
+					fila[1] = v.getPersona().getD();
+					fila[2] = v.getPersona().getM();
+					fila[3] = v.getPersona().getE();
+					fila[4] = v.getPersona().getC();
+                }
+                
+//				for (Vertice v : c1) {
+//					Persona p = v.getPersona();
+//					int numCols = lista1.getModel().getColumnCount();
+//					Object [] fila = new Object[numCols]; 
+//					fila[0] = p.getNombre();
+//					fila[1] = p.getD();
+//					fila[2] = p.getM();
+//					fila[3] = p.getE();
+//					fila[4] = p.getC();
+//					 
+//					 ((DefaultTableModel) lista1.getModel()).addRow(fila);
+//				}
+//				for (Vertice v : c2) {
+//					Persona p = v.getPersona();
+//					int numCols = lista2.getModel().getColumnCount();
+//					Object [] fila = new Object[numCols]; 
+//					fila[0] = p.getNombre();
+//					fila[1] = p.getD();
+//					fila[2] = p.getM();
+//					fila[3] = p.getE();
+//					fila[4] = p.getC();
+//					
+//					((DefaultTableModel) lista2.getModel()).addRow(fila);
+//				}
 				
 			}
 		});

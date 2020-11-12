@@ -303,7 +303,7 @@ public class interfaz {
 					fila[3] = v.getPersona().getE();
 					fila[4] = v.getPersona().getC();
 					
-					 ((DefaultTableModel) lista1.getModel()).addRow(fila);
+					 ((DefaultTableModel) lista2.getModel()).addRow(fila);
                 }
                 
 //				for (Vertice v : c1) {

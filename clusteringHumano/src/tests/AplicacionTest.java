@@ -40,6 +40,8 @@ class AplicacionTest {
 		Vertice v2 = new Vertice(persona2);
 		Arista arista = new Arista(v1, v2);
 		
+		juego.crearAristas();
+		
 		assertTrue(juego.getGrafo().existeArista(arista));
 
 	}
@@ -62,10 +64,11 @@ class AplicacionTest {
 		Arista arista2 = new Arista(v2, v3);
 		Arista arista3 = new Arista(v2, v1);
 		
+		juego.crearAristas();
+		
 		assertTrue(juego.getGrafo().existeArista(arista));
 		assertTrue(juego.getGrafo().existeArista(arista2));
 		assertTrue(juego.getGrafo().existeArista(arista3));
-
 	}
 	
 	@Test
@@ -83,6 +86,8 @@ class AplicacionTest {
 		Vertice v3 = new Vertice(persona3);
 		Arista arista = new Arista(v3, v1);
 		
+		aplicacion.crearAristas();
+		
 		assertTrue(aplicacion.getGrafo().existeArista(arista));
 		
 	}
@@ -99,6 +104,5 @@ class AplicacionTest {
 		assertTrue(juego.getPersonas().contains(persona));
 		assertTrue(juego.getPersonas().contains(persona2));
 	}
-	
 }
 

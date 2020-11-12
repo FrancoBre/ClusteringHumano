@@ -24,7 +24,7 @@ public class Cluster {
 	}
 	
 	public ArrayList<Vertice> getGrupo1() {
-		return grupo1;
+		return this.grupo1;
 	}
 
 	public void setGrupo1(ArrayList<Vertice> grupo1) {
@@ -32,7 +32,7 @@ public class Cluster {
 	}
 
 	public ArrayList<Vertice> getGrupo2() {
-		return grupo2;
+		return this.grupo2;
 	}
 
 	public void setGrupo2(ArrayList<Vertice> grupo2) {

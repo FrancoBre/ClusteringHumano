@@ -27,6 +27,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import grafo.JFrameGraphics;
+import logica.AGM;
 import logica.Arista;
 import logica.Cluster;
 import logica.Grafo;
@@ -269,12 +270,22 @@ public class interfaz {
 			private void cargarListas() {
 				
 				Grafo g = juego.getGrafo();
-				
-				for(Arista a : g.getAristas()) {
+//				for(Arista a : g.getAristas()) {
+//					System.out.println(a.getVertice1().getPersona().getNombre()+" - "+a.getVertice2().getPersona().getNombre());
+//				}
+                
+				AGM agm = new AGM(g);
+				for(Arista a : agm.getAristas()) {
 					System.out.println(a.getVertice1().getPersona().getNombre()+" - "+a.getVertice2().getPersona().getNombre());
 				}
-                Cluster cluster = new Cluster(g); 
-
+				Cluster cluster = new Cluster(g); 
+				System.out.println("----------Grupo 1---------");
+				System.out.println(cluster.getGrupo1());
+				System.out.println("----------Grupo 2---------");
+				System.out.println(cluster.getGrupo2());
+				
+				System.out.println(cluster.getGrupo1());
+				
                 ArrayList<Vertice> c1 = cluster.getGrupo1();
                 ArrayList<Vertice> c2 = cluster.getGrupo2();
 
@@ -450,7 +461,6 @@ public class interfaz {
 					agregarDatosLista();
 					limpioDatos();
 				}
-				
 			}});
 		
 		

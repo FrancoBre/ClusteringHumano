@@ -34,7 +34,7 @@ public class Aplicacion {
 	}
 	
 	public Grafo getGrafo() {
-		return grafo;
+		return this.grafo;
 	}
 
 	public void setGrafo(Grafo grafo) {

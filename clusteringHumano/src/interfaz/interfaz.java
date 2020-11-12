@@ -27,7 +27,6 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 import grafo.JFrameGraphics;
-import logica.AGM;
 import logica.Arista;
 import logica.Cluster;
 import logica.Grafo;
@@ -278,16 +277,20 @@ public class interfaz {
 				for(Arista a : agm.getAristas()) {
 					System.out.println(a.getVertice1().getPersona().getNombre()+" - "+a.getVertice2().getPersona().getNombre());
 				}
-				Cluster cluster = new Cluster(g); 
-				System.out.println("----------Grupo 1---------");
-				System.out.println(cluster.getGrupo1());
-				System.out.println("----------Grupo 2---------");
-				System.out.println(cluster.getGrupo2());
+//				Cluster cluster = new Cluster(g); 
+//				System.out.println("----------Grupo 1---------");
+//				System.out.println(cluster.getGrupo1());
+//				System.out.println("----------Grupo 2---------");
+//				System.out.println(cluster.getGrupo2());
 				
 				System.out.println(cluster.getGrupo1());
 				
-                ArrayList<Vertice> c1 = cluster.getGrupo1();
-                ArrayList<Vertice> c2 = cluster.getGrupo2();
+				juego.crearCluster();
+				
+                Cluster cluster = juego.getCluster(); 
+				
+                ArrayList<Vertice> c1 = juego.getGrupo1();
+                ArrayList<Vertice> c2 = juego.getGrupo2();
 
                 ArrayList<Object[]> datos1 = new ArrayList<Object[]>();
                 ArrayList<Object[]> datos2 = new ArrayList<Object[]>();

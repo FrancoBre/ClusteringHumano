@@ -13,15 +13,16 @@ import logica.AGM;
 public class Aplicacion {
 
 	private ArrayList<Persona> personas;
-	private GCompleto grafo;
+	private Grafo grafo;
+	private GCompleto grafoCompleto;
 	private AGM agm;
 	private Cluster cluster;
 	private ArrayList<Vertice> grupo1;
 	private ArrayList<Vertice> grupo2;
 
 	public Aplicacion() {
-		this.grafo = new GCompleto();
 		this.personas = new ArrayList<Persona>();
+		this.grafo = new Grafo();
 	}
 	
 	public void crearPersona(Persona persona) {
@@ -29,44 +30,34 @@ public class Aplicacion {
 	}
 	
 	public void crearAristas() {
+		ArrayList<Arista> aristas = new ArrayList<Arista>();
 		
-		for (int i = 1; i < this.getPersonas().size(); i++) {
-			Vertice v1 = new Vertice(personas.get(i-1));
-			Vertice v2 = new Vertice(personas.get(i));
-			Arista arista = new Arista(v1, v2);
-			
-			this.grafo.agregarArista(arista);
+		for (int i = 0; i < this.getPersonas().size()-1; i++) {
+			Vertice v1 = new Vertice(this.getPersonas().get(i));
+			Vertice v2 = new Vertice(this.getPersonas().get(i+1));
+							
+			System.out.println("Arista a ingresar");
+			System.out.println((new Arista(v1, v2)).getVertice1().getPersona().getNombre()
+					+" - "+(new Arista(v1, v2)).getVertice2().getPersona().getNombre());
+			aristas.add(new Arista(v1, v2));
 		}
 		
+		System.out.println("\nAristas en arraylist aristas");
+		for(Arista a : aristas) {
+			this.grafo.agregarArista(a);
+			System.out.println(a.getVertice1().getPersona().getNombre()
+					+" - "+a.getVertice2().getPersona().getNombre());
+		}
+		
+		this.grafoCompleto = new GCompleto(this.grafo);
 		this.crearCluster();
 		
-		/*if(personas.size()>=2) {
-			Vertice v1 = new Vertice(personas.get(personas.size()-1));
-			Vertice v2 = new Vertice(personas.get(personas.size()-2));
-			Arista arista = new Arista(v1, v2);
-			
-			this.grafo.agregarArista(arista);
-			this.crearAGM(this.grafo);
-			this.crearCluster();
-		}*/
-	}
-	
-	private void crearAGM(GCompleto grafo) {
-		this.agm = new AGM(grafo);
 	}
 
 	private void crearCluster() {
-		this.cluster = new Cluster(grafo);
+		this.cluster = new Cluster(grafoCompleto);
 		this.grupo1 = cluster.getGrupo1();
 		this.grupo2 = cluster.getGrupo2();
-	}
-	
-	public Grafo getGrafo() {
-		return this.grafo;
-	}
-
-	public void setGrafo(GCompleto grafo) {
-		this.grafo = grafo;
 	}
 
 	public ArrayList<Persona> getPersonas() {
@@ -108,4 +99,45 @@ public class Aplicacion {
 	public void setAgm(AGM agm) {
 		this.agm = agm;
 	}
+	
+	public GCompleto getGrafoCompleto() {
+		return grafoCompleto;
+	}
+
+	public void setGrafoCompleto(GCompleto grafoCompleto) {
+		this.grafoCompleto = grafoCompleto;
+	}
+	
+	public Grafo getGrafo() {
+		return grafo;
+	}
+
+	public void setGrafo(Grafo grafo) {
+		this.grafo = grafo;
+	}
+
+	public static void main(String[] args) {
+		Aplicacion aplicacion = new Aplicacion();
+
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		Persona z = new Persona(1, 3, 3, 1, "vertice 5");
+		
+		aplicacion.crearPersona(i);
+		aplicacion.crearPersona(j);
+		aplicacion.crearPersona(x);
+		aplicacion.crearPersona(y);
+		aplicacion.crearPersona(z);
+		
+		aplicacion.crearAristas();
+		
+		System.out.println(aplicacion.getGrafo().getAristas().isEmpty()+"\n");
+		
+		for(Arista a : aplicacion.getGrafoCompleto().getAristas())	
+			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
+					a.getVertice2().getPersona().getNombre());
+	}
+	
 }

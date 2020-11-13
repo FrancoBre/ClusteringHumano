@@ -12,6 +12,12 @@ public class GCompleto extends Grafo{
     	this.vertices = new ArrayList<Vertice>();
     	this.aristas = new ArrayList<Arista>();
     }
+    
+    public GCompleto(Grafo grafo) {
+    	if(grafo instanceof Grafo) 
+    		for(Arista a : grafo.getAristas())
+    			this.agregarArista(a);
+    }
 	
 	@Override
 	public void agregarArista(Arista arista) {
@@ -20,7 +26,7 @@ public class GCompleto extends Grafo{
     	if((!getAristas().contains(arista) || !getAristas().contains(alReves)) && 
     			!arista.getVertice1().equals(arista.getVertice2())) {	
     		
-    		getAristas().add(arista);
+    		this.getAristas().add(arista);
     		
     		if(!getVertices().contains(arista.getVertice1())) 
     			getVertices().add(arista.getVertice1());

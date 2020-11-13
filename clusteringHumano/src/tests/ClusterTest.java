@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import logica.AGM;
 import logica.Arista;
 import logica.Cluster;
 import logica.GCompleto;
@@ -32,8 +33,10 @@ class ClusterTest {
 		
 		g.agregarArista(a1);
 		g.agregarArista(a2);
+		
+		AGM agm = new AGM(g);
 	
-		Cluster cluster = new Cluster(g); 
+		Cluster cluster = new Cluster(agm); 
 		
 		ArrayList<Vertice> c1 = cluster.getGrupo1();
 		ArrayList<Vertice> c2 = cluster.getGrupo2() ;
@@ -71,8 +74,10 @@ class ClusterTest {
 		g.agregarArista(a2);
 		g.agregarArista(a3);
 		g.agregarArista(a4);
+		
+		AGM agm = new AGM(g);
 	
-		Cluster cluster = new Cluster(g); 
+		Cluster cluster = new Cluster(agm); 
 		
 		ArrayList<Vertice> c1 = cluster.getGrupo1();
 		ArrayList<Vertice> c2 = cluster.getGrupo2();
@@ -116,7 +121,9 @@ class ClusterTest {
 		g.agregarArista(a3);
 		g.agregarArista(a4);
 		
-		Cluster cluster = new Cluster(g);
+		AGM agm = new AGM(g);
+		
+		Cluster cluster = new Cluster(agm);
 		
 		ArrayList<Vertice> c1 = cluster.getGrupo1();
 		ArrayList<Vertice> c2 = cluster.getGrupo2();
@@ -160,7 +167,9 @@ class ClusterTest {
 		g.agregarArista(a3);
 		g.agregarArista(a4);
 		
-		Cluster cluster = new Cluster(g);
+		AGM agm = new AGM(g);
+		
+		Cluster cluster = new Cluster(agm);
 		
 		assertFalse(cluster.getGrupo2().contains(v4) && 
 				cluster.getGrupo2().contains(v2));

@@ -36,33 +36,32 @@ public class Aplicacion {
 			Vertice v1 = new Vertice(this.getPersonas().get(i));
 			Vertice v2 = new Vertice(this.getPersonas().get(i+1));
 							
-			System.out.println("Arista a ingresar");
-			System.out.println((new Arista(v1, v2)).getVertice1().getPersona().getNombre()
-					+" - "+(new Arista(v1, v2)).getVertice2().getPersona().getNombre());
+//			System.out.println("Arista a ingresar");
+//			System.out.println((new Arista(v1, v2)).getVertice1().getPersona().getNombre()
+//					+" - "+(new Arista(v1, v2)).getVertice2().getPersona().getNombre());
 			
 			this.grafo.agregarArista(new Arista(v1, v2));
 		}
 		
-		System.out.println("\nAristas en grafo normal");
-		for(Arista a : this.grafo.getAristas()) {
-			System.out.println(a.getVertice1().getPersona().getNombre()
-					+" - "+a.getVertice2().getPersona().getNombre());
-		}
+//		System.out.println("\nAristas en grafo normal");
+//		for(Arista a : this.grafo.getAristas()) {
+//			System.out.println(a.getVertice1().getPersona().getNombre()
+//					+" - "+a.getVertice2().getPersona().getNombre());
+//		}
 		
 		this.grafoCompleto = new GCompleto(this.grafo);
 		
-		System.out.println("\nAristas en grafo completo");
-		for(Arista a : this.grafoCompleto.getAristas()) {
-			System.out.println(a.getVertice1().getPersona().getNombre()
-					+" - "+a.getVertice2().getPersona().getNombre());
-		}
-			
-		this.crearCluster();
+		this.agm = new AGM(this.grafoCompleto);
+//		System.out.println("\nAristas en grafo completo");
+//		for(Arista a : this.grafoCompleto.getAristas()) {
+//			System.out.println(a.getVertice1().getPersona().getNombre()
+//					+" - "+a.getVertice2().getPersona().getNombre());
+//		}
 		
 	}
 
-	private void crearCluster() {
-		this.cluster = new Cluster(grafoCompleto);
+	public void crearCluster() {
+		this.cluster = new Cluster(agm);
 		this.grupo1 = cluster.getGrupo1();
 		this.grupo2 = cluster.getGrupo2();
 	}
@@ -121,30 +120,6 @@ public class Aplicacion {
 
 	public void setGrafo(Grafo grafo) {
 		this.grafo = grafo;
-	}
-
-	public static void main(String[] args) {
-		Aplicacion aplicacion = new Aplicacion();
-
-		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
-		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
-		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
-		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
-		Persona z = new Persona(1, 3, 3, 1, "vertice 5");
-		
-		aplicacion.crearPersona(i);
-		aplicacion.crearPersona(j);
-		aplicacion.crearPersona(x);
-		aplicacion.crearPersona(y);
-		aplicacion.crearPersona(z);
-		
-		aplicacion.crearAristas();
-		
-		System.out.println(aplicacion.getGrafo().getAristas().isEmpty()+"\n");
-		
-		for(Arista a : aplicacion.getGrafoCompleto().getAristas())	
-			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
-					a.getVertice2().getPersona().getNombre());
 	}
 	
 }

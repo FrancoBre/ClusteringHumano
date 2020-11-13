@@ -49,7 +49,11 @@ public class Aplicacion {
 					+" - "+a.getVertice2().getPersona().getNombre());
 		}
 		
-		this.grafoCompleto = new GCompleto(this.grafo);
+		this.grafoCompleto = new GCompleto();
+		
+		for(Arista a : this.grafo.getAristas())
+			this.grafoCompleto.agregarArista(a);
+			
 		this.crearCluster();
 		
 	}

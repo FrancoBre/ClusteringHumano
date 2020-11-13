@@ -247,4 +247,54 @@ class GrafoTest {
 		assertFalse(a.equals(a2));
 	}
 	
+	@Test
+	public void creacionDeGrafoCompleto() { //a partir de grafo normal
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		Persona z = new Persona(1, 3, 3, 1, "vertice 5");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		Vertice v5 = new Vertice(z);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		Arista a4 = new Arista(v4, v5);
+		
+		Grafo grafo = new Grafo();
+		
+		grafo.agregarArista(a1);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		grafo.agregarArista(a4);
+		
+		assertTrue(grafo.getAristas().contains(a1));
+		assertTrue(grafo.getAristas().contains(a2));
+		assertTrue(grafo.getAristas().contains(a3));
+		assertTrue(grafo.getAristas().contains(a4));
+		
+		Grafo grafoCompleto = new GCompleto(grafo);
+		
+		Arista a5 = new Arista(v1, v3);
+		Arista a6 = new Arista(v1, v4);
+		Arista a7 = new Arista(v1, v5);
+		Arista a8 = new Arista(v2, v4);
+		Arista a9 = new Arista(v2, v5);
+		Arista a10 = new Arista(v3, v5);
+				
+		assertTrue(grafoCompleto.getAristas().contains(a5));
+		assertTrue(grafoCompleto.getAristas().contains(a6));
+		assertTrue(grafoCompleto.getAristas().contains(a7));
+		assertTrue(grafoCompleto.getAristas().contains(a8));
+		assertTrue(grafoCompleto.getAristas().contains(a9));
+		assertTrue(grafoCompleto.getAristas().contains(a10));
+		assertEquals(10, grafoCompleto.getAristas().size());
+
+	}
+	
 }

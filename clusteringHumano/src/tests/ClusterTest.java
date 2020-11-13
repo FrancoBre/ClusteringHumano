@@ -218,4 +218,40 @@ class ClusterTest {
 		
 	}
 	
+	@Test
+	public void clusterTest4() {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		
+		Grafo grafo = new Grafo();
+		
+		grafo.agregarArista(a1);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		
+		
+		GCompleto completo = new GCompleto(grafo);
+		AGM agm = new AGM(completo);
+		Cluster cluster = new Cluster(agm);
+		
+		ArrayList<Vertice> c1 = cluster.getGrupo1();
+		ArrayList<Vertice> c2 = cluster.getGrupo2();
+		
+		assertTrue(c2.contains(v2));
+		assertTrue(c2.contains(v1));
+		assertTrue(c2.contains(v3));
+		
+	}
+	
 }

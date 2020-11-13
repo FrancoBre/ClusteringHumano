@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import interfaz.Aplicacion;
 import logica.Arista;
 import logica.GCompleto;
 import logica.Grafo;
@@ -294,7 +295,56 @@ class GrafoTest {
 		assertTrue(grafoCompleto.getAristas().contains(a9));
 		assertTrue(grafoCompleto.getAristas().contains(a10));
 		assertEquals(10, grafoCompleto.getAristas().size());
-
+	}
+	
+	@Test
+	public void creacionDeGrafoCompletoEnAplicacion() { 
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		Persona z = new Persona(1, 3, 3, 1, "vertice 5");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		Vertice v5 = new Vertice(z);
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		Arista a4 = new Arista(v4, v5);
+		
+		Aplicacion aplicacion = new Aplicacion();
+		
+		aplicacion.crearPersona(i);
+		aplicacion.crearPersona(j);
+		aplicacion.crearPersona(x);
+		aplicacion.crearPersona(y);
+		aplicacion.crearPersona(z);
+		
+		assertTrue(aplicacion.getGrafo().getAristas().contains(a1));
+		assertTrue(aplicacion.getGrafo().getAristas().contains(a2));
+		assertTrue(aplicacion.getGrafo().getAristas().contains(a3));
+		assertTrue(aplicacion.getGrafo().getAristas().contains(a4));
+		
+		aplicacion.crearAristas();
+		
+		Arista a5 = new Arista(v1, v3);
+		Arista a6 = new Arista(v1, v4);
+		Arista a7 = new Arista(v1, v5);
+		Arista a8 = new Arista(v2, v4);
+		Arista a9 = new Arista(v2, v5);
+		Arista a10 = new Arista(v3, v5);
+				
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a5));
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a6));
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a7));
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a8));
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a9));
+		assertTrue(aplicacion.getGrafoCompleto().getAristas().contains(a10));
+		assertEquals(10, aplicacion.getGrafoCompleto().getAristas().size());
 	}
 	
 }

@@ -30,7 +30,7 @@ public class Aplicacion {
 	}
 	
 	public void crearAristas() {
-		ArrayList<Arista> aristas = new ArrayList<Arista>();
+//		ArrayList<Arista> aristas = new ArrayList<Arista>();
 		
 		for (int i = 0; i < this.getPersonas().size()-1; i++) {
 			Vertice v1 = new Vertice(this.getPersonas().get(i));
@@ -39,20 +39,23 @@ public class Aplicacion {
 			System.out.println("Arista a ingresar");
 			System.out.println((new Arista(v1, v2)).getVertice1().getPersona().getNombre()
 					+" - "+(new Arista(v1, v2)).getVertice2().getPersona().getNombre());
-			aristas.add(new Arista(v1, v2));
+			
+			this.grafo.agregarArista(new Arista(v1, v2));
 		}
 		
-		System.out.println("\nAristas en arraylist aristas");
-		for(Arista a : aristas) {
-			this.grafo.agregarArista(a);
+		System.out.println("\nAristas en grafo normal");
+		for(Arista a : this.grafo.getAristas()) {
 			System.out.println(a.getVertice1().getPersona().getNombre()
 					+" - "+a.getVertice2().getPersona().getNombre());
 		}
 		
-		this.grafoCompleto = new GCompleto();
+		this.grafoCompleto = new GCompleto(this.grafo);
 		
-		for(Arista a : this.grafo.getAristas())
-			this.grafoCompleto.agregarArista(a);
+		System.out.println("\nAristas en grafo completo");
+		for(Arista a : this.grafoCompleto.getAristas()) {
+			System.out.println(a.getVertice1().getPersona().getNombre()
+					+" - "+a.getVertice2().getPersona().getNombre());
+		}
 			
 		this.crearCluster();
 		

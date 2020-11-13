@@ -127,25 +127,7 @@ public class Aplicacion {
 		grafo.agregarArista(a2);
 		grafo.agregarArista(a3);
 		
-//		System.out.println("Grafo completo");
-//		for(Arista a : grafo.getAristas())
-//			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
-//					a.getVertice2().getPersona().getNombre());
-		
 		AGM agm = new AGM(grafo);
-		
-//		System.out.println("\nAGM");
-//		for(Arista a : agm.getAristas())
-//			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
-//					a.getVertice2().getPersona().getNombre());
-//		System.out.println("\nCon los vertices");
-//		for(Vertice v : agm.getVertices()) {
-//			System.out.println(v.getPersona().getNombre()+"\nCon los vecinos=");
-//			for(Vertice vv : v.getVecinos()) {
-//				System.out.println(vv.getPersona().getNombre());
-//			}
-//			System.out.println();
-//		}
 			
 		Arista apm = Busqueda.aristaDePesoMaximo(agm);
 		Vertice vg1 = apm.getVertice1();

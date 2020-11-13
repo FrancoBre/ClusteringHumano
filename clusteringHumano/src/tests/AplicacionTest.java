@@ -111,6 +111,7 @@ class AplicacionTest {
 		app.crearPersona(z);
 		
 		app.crearAristas();
+		app.crearCluster();
 				
 		assertTrue(app.getCluster().getGrupo2().contains(v1));
 		assertTrue(app.getCluster().getGrupo2().contains(v2));
@@ -146,14 +147,15 @@ class AplicacionTest {
 		app.crearPersona(w);
 		
 		app.crearAristas();
+		app.crearCluster();
 				
-		assertTrue(app.getCluster().getGrupo1().contains(v1));
-		assertTrue(app.getCluster().getGrupo1().contains(v2));
-		assertTrue(app.getCluster().getGrupo1().contains(v3));
-//		assertTrue(app.getCluster().getGrupo1().contains(v6));
+		assertTrue(app.getCluster().getGrupo2().contains(v1));
+		assertTrue(app.getCluster().getGrupo2().contains(v2));
+		assertTrue(app.getCluster().getGrupo2().contains(v3));
 		
-		assertTrue(app.getCluster().getGrupo2().contains(v4));
-		assertTrue(app.getCluster().getGrupo2().contains(v5));
+		assertTrue(app.getCluster().getGrupo1().contains(v6));
+		assertTrue(app.getCluster().getGrupo1().contains(v4));
+		assertTrue(app.getCluster().getGrupo1().contains(v5));
 	}	
 }
 

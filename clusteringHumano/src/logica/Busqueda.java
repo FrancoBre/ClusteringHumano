@@ -40,21 +40,39 @@ public class Busqueda {
 		
 	}
 	
+	public static boolean contieneVertice(HashMap<Vertice, Boolean> marcados, Vertice vertice) {
+		for (Vertice v1 : marcados.keySet())  
+			if(v1.equals(vertice)) return true;
+		return false;
+	}
+	
+	public static boolean claveParaVertice(HashMap<Vertice, Boolean> marcados, Vertice vertice) {
+		for (Vertice v1 : marcados.keySet())  
+			if(v1.equals(vertice))
+				if(marcados.get(v1)) return true;
+				else return false;
+		return false;
+	}
+	
+	private static Vertice getElementoDeMarcados(HashMap<Vertice, Boolean> marcados, Vertice vertice) {
+		for(Vertice v1 : marcados.keySet())  
+			if(v1.equals(vertice)) return v1;
+		return vertice;
+	}
+	
 	public static ArrayList<Vertice> alcanzablesDesde(Grafo grafo, Vertice v) {
-		Map<Vertice, Boolean> marcados = inicializarMarcados(grafo);
+		HashMap<Vertice, Boolean> marcados = inicializarMarcados(grafo);
 		LinkedList <Vertice> pendientes = new LinkedList<Vertice>();
 		pendientes.add(v);
 		
 		while(!pendientes.isEmpty()) {
 			Vertice i = pendientes.getFirst();
 			
-			marcados.remove(i);
+			marcados.remove(Busqueda.getElementoDeMarcados(marcados, i));
 			marcados.put(i, true);
 			
-			for(Vertice v1 : pendientes.getFirst().getVecinos()) { //sera que no son iguales porque 
-				System.out.println(marcados.containsKey(v1));
-				System.out.println(v1);
-				if(marcados.get(v1)!=null && !marcados.get(v1)) //no tienen los mismos vecinos?
+			for(Vertice v1 : pendientes.getFirst().getVecinos()) { 
+				if(!claveParaVertice(marcados, v1))
 					pendientes.add(v1);
 			}
 			
@@ -73,7 +91,7 @@ public class Busqueda {
 		
 		return alcanzables;
 	}
-	
+
 	//Devuelve si el segundo vertice de la arista es alcanzable a partir del primer vertice
 	//caso para el cual el grafo con esa arista formaria ciclo
 	public static boolean formaCiclo(Grafo grafo, Arista arista) {	
@@ -96,8 +114,8 @@ public class Busqueda {
 		return ret;
 	}
 
-	private static Map<Vertice, Boolean> inicializarMarcados(Grafo grafo) {
-		Map <Vertice, Boolean> marcados = new HashMap <Vertice, Boolean>(); 	
+	private static HashMap<Vertice, Boolean> inicializarMarcados(Grafo grafo) {
+		HashMap <Vertice, Boolean> marcados = new HashMap <Vertice, Boolean>(); 	
 		
 		for (Vertice v : grafo.getVertices()) {
 			marcados.put(v, false);

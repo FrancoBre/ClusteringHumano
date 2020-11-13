@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import logica.AGM;
 import logica.Arista;
 import logica.Busqueda;
 import logica.GCompleto;
@@ -175,6 +176,87 @@ class BusquedaTest {
 		
 		assertTrue(Busqueda.alcanzablesDesde(agm, v1).contains(v2));
 		
+	}
+	
+	@Test
+	public void alcanzablesDesdeTest4() {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		
+		Grafo grafo = new Grafo();
+		
+		Arista a1 = new Arista(v1, v3);
+		Arista a2 = new Arista(v3, v2);
+		Arista a3 = new Arista(v2, v4);
+		
+		grafo.agregarArista(a1);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		
+		Arista apm = Busqueda.aristaDePesoMaximo(grafo);
+		
+		assertEquals(a3, apm);
+		
+		assertTrue(Busqueda.alcanzablesDesde(grafo, apm.getVertice1()).contains(v1));
+		
+		assertTrue(Busqueda.alcanzablesDesde(grafo, apm.getVertice2()).contains(v2));
+		assertTrue(Busqueda.alcanzablesDesde(grafo, apm.getVertice2()).contains(v3));
+		assertTrue(Busqueda.alcanzablesDesde(grafo, apm.getVertice2()).contains(v4));
+	}
+	
+	@Test
+	public void alcanzablesDesdeTest5() {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		
+		GCompleto grafo = new GCompleto();
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		
+		grafo.agregarArista(a1);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		
+		AGM agm = new AGM(grafo);
+		
+		//Se crea bien el AGM a partir del grafo completo?
+		assertTrue(agm.getAristas().contains(new Arista(v1, v3)));
+		assertTrue(agm.getAristas().contains(new Arista(v2, v3)));
+		assertTrue(agm.getAristas().contains(new Arista(v4, v2)));
+		assertFalse(agm.getAristas().contains(a1));
+		
+		Arista apm = Busqueda.aristaDePesoMaximo(agm);
+		
+		Arista a4 = new Arista(v4, v2);
+		
+		//La arista de mayor peso es la que corresponde?
+		assertEquals(a4, apm);
+		
+		Busqueda.eliminarAristaDeMayorPeso(agm);
+		
+		//Los alcanzables desde los vertices de la arista de mayor peso son los que 
+		//corresponden?
+		assertTrue(Busqueda.alcanzablesDesde(agm, apm.getVertice1()).contains(v4));
+		
+		assertTrue(Busqueda.alcanzablesDesde(agm, apm.getVertice2()).contains(v2));
+		assertTrue(Busqueda.alcanzablesDesde(agm, apm.getVertice2()).contains(v3));
+		assertTrue(Busqueda.alcanzablesDesde(agm, apm.getVertice2()).contains(v1));
 	}
 	
 	@Test
@@ -434,10 +516,6 @@ class BusquedaTest {
 		assertTrue(g.getVertices().contains(v2));
 		assertTrue(g.getVertices().contains(v3));
 		
-//		assertTrue(v1.getVecinos().contains(v2));
-//		assertTrue(v1.getVecinos().contains(v3));
-//		assertTrue(v2.getVecinos().contains(v3));
-		
 		assertTrue(Busqueda.formaCiclo(g, new Arista(v1, v2)));
 		
 	}
@@ -514,7 +592,6 @@ class BusquedaTest {
 		aristas.add(a3);
 		
 		assertTrue(Busqueda.tienePesoMinimo(aristas, a1));
-		
 	}
 	
 	@Test

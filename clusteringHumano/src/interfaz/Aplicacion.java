@@ -3,6 +3,7 @@ package interfaz;
 import java.util.ArrayList;
 
 import logica.Arista;
+import logica.Busqueda;
 import logica.Cluster;
 import logica.GCompleto;
 import logica.Grafo;
@@ -30,34 +31,17 @@ public class Aplicacion {
 	}
 	
 	public void crearAristas() {
-//		ArrayList<Arista> aristas = new ArrayList<Arista>();
 		
 		for (int i = 0; i < this.getPersonas().size()-1; i++) {
 			Vertice v1 = new Vertice(this.getPersonas().get(i));
 			Vertice v2 = new Vertice(this.getPersonas().get(i+1));
-							
-//			System.out.println("Arista a ingresar");
-//			System.out.println((new Arista(v1, v2)).getVertice1().getPersona().getNombre()
-//					+" - "+(new Arista(v1, v2)).getVertice2().getPersona().getNombre());
-			
+		
 			this.grafo.agregarArista(new Arista(v1, v2));
 		}
-		
-//		System.out.println("\nAristas en grafo normal");
-//		for(Arista a : this.grafo.getAristas()) {
-//			System.out.println(a.getVertice1().getPersona().getNombre()
-//					+" - "+a.getVertice2().getPersona().getNombre());
-//		}
 		
 		this.grafoCompleto = new GCompleto(this.grafo);
 		
 		this.agm = new AGM(this.grafoCompleto);
-//		System.out.println("\nAristas en grafo completo");
-//		for(Arista a : this.grafoCompleto.getAristas()) {
-//			System.out.println(a.getVertice1().getPersona().getNombre()
-//					+" - "+a.getVertice2().getPersona().getNombre());
-//		}
-		
 	}
 
 	public void crearCluster() {
@@ -120,6 +104,73 @@ public class Aplicacion {
 
 	public void setGrafo(Grafo grafo) {
 		this.grafo = grafo;
+	}
+	
+	public static void main(String[] args) {
+		Persona i = new Persona(1, 2, 1, 5, "vertice 1");
+		Persona j = new Persona(4, 2, 5, 5, "vertice 2");
+		Persona x = new Persona(3, 1, 2, 4, "vertice 3");
+		Persona y = new Persona(3, 5, 5, 1, "vertice 4");
+		
+		Vertice v1 = new Vertice(i);
+		Vertice v2 = new Vertice(j);
+		Vertice v3 = new Vertice(x);
+		Vertice v4 = new Vertice(y);
+		
+		GCompleto grafo = new GCompleto();
+		
+		Arista a1 = new Arista(v1, v2);
+		Arista a2 = new Arista(v2, v3);
+		Arista a3 = new Arista(v3, v4);
+		
+		grafo.agregarArista(a1);
+		grafo.agregarArista(a2);
+		grafo.agregarArista(a3);
+		
+//		System.out.println("Grafo completo");
+//		for(Arista a : grafo.getAristas())
+//			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
+//					a.getVertice2().getPersona().getNombre());
+		
+		AGM agm = new AGM(grafo);
+		
+//		System.out.println("\nAGM");
+//		for(Arista a : agm.getAristas())
+//			System.out.println(a.getVertice1().getPersona().getNombre()+" - "+
+//					a.getVertice2().getPersona().getNombre());
+//		System.out.println("\nCon los vertices");
+//		for(Vertice v : agm.getVertices()) {
+//			System.out.println(v.getPersona().getNombre()+"\nCon los vecinos=");
+//			for(Vertice vv : v.getVecinos()) {
+//				System.out.println(vv.getPersona().getNombre());
+//			}
+//			System.out.println();
+//		}
+			
+		Arista apm = Busqueda.aristaDePesoMaximo(agm);
+		Vertice vg1 = apm.getVertice1();
+		Vertice vg2 = apm.getVertice2();
+		
+		Busqueda.eliminarAristaDeMayorPeso(agm);
+		
+		System.out.println("\nArista de peso maximo=");
+		System.out.println(vg1.getPersona().getNombre()+" - "+
+				vg2.getPersona().getNombre()+"\n");
+		
+		ArrayList<Vertice> g1 = Busqueda.alcanzablesDesde(agm, vg1); 
+		
+		System.out.println("Grupo 1");
+		for(Vertice v : g1) {
+			System.out.println(v.getPersona().getNombre ());
+		}
+		
+		ArrayList<Vertice> g2 = Busqueda.alcanzablesDesde(agm, vg2);
+		
+		System.out.println("\nGrupo 2");
+		for(Vertice v : g2) {
+			System.out.println(v.getPersona().getNombre());
+		}
+			
 	}
 	
 }

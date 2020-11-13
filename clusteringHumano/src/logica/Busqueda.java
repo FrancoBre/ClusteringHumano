@@ -48,11 +48,15 @@ public class Busqueda {
 		while(!pendientes.isEmpty()) {
 			Vertice i = pendientes.getFirst();
 			
+			marcados.remove(i);
 			marcados.put(i, true);
 			
-			for(Vertice v1 : pendientes.getFirst().getVecinos())  
-				if(marcados.get(v1)!=null && !marcados.get(v1)) 
+			for(Vertice v1 : pendientes.getFirst().getVecinos()) { //sera que no son iguales porque 
+				System.out.println(marcados.containsKey(v1));
+				System.out.println(v1);
+				if(marcados.get(v1)!=null && !marcados.get(v1)) //no tienen los mismos vecinos?
 					pendientes.add(v1);
+			}
 			
 			pendientes.remove(i);
 			
@@ -61,10 +65,11 @@ public class Busqueda {
 		ArrayList <Vertice> alcanzables = new ArrayList<Vertice>(); 
  
 		//Agregar los vertices de marcados que tengan true
-		for (Vertice v1 : marcados.keySet()) 
+		for (Vertice v1 : marcados.keySet()) { 
 			
-				if(marcados.get(v1) && !alcanzables.contains(v1)) alcanzables.add(v1);
-		
+				if(marcados.get(v1) && !alcanzables.contains(v1)) 
+					alcanzables.add(v1);
+		}
 		
 		return alcanzables;
 	}
